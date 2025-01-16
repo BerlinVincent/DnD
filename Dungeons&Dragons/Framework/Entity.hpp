@@ -71,8 +71,23 @@ class Entity {
         name = name_desc.at(0);
         descriptor = name_desc.at(1);
         alignment = alignment;
+
         max_health = max_health;
         current_health = max_health;
         temp_health = 0;
+
+        proficiency_bonus = attr_profbon.at(0);
+
+        strength = attr_profbon.at(1);
+        dexterity = attr_profbon.at(2);
+        constitution = attr_profbon.at(3);
+        intelligence = attr_profbon.at(4);
+        wisdom = attr_profbon.at(5);
+        charisma = attr_profbon.at(6);
     }
+};
+
+class Monster : public Entity {
+    public:
+        uint challenge;
 };
