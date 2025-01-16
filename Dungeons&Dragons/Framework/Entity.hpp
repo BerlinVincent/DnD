@@ -1,10 +1,12 @@
-#include "Attacks_and_Spells.cpp"
+#include "Attacks_and_Spells.hpp"
 #include "Alignment.hpp"
+#include "Traits_and_Feats.hpp"
 
 class Entity {
     // Attributes
     // Entity Description
     string name;
+    string descriptor;
     Alignment alignment;    
 
     // Active Entity Game Attributes
@@ -19,7 +21,7 @@ class Entity {
     int passive_wisdom;
     // Inspiration, Proficiency Bonus, Hit Dice
     bool inspiration;
-    int proficiency_bonus;
+    uint proficiency_bonus;
     int hit_dice;
 
     // Entity Game Attributes
@@ -58,6 +60,19 @@ class Entity {
     int stealth;
     int survival;
 
-    // Entity Abilities
+    // Entity Abilities, Traits, Feats
     vector<Attack> Attacks_and_Spells;
+    vector<Trait> Traits;
+    vector<Feat> Feats;
+
+    // Constructors
+    Entity();
+    Entity(vector<string> name_desc, Alignment alignment, int max_health, vector<uint> attr_profbon) {
+        name = name_desc.at(0);
+        descriptor = name_desc.at(1);
+        alignment = alignment;
+        max_health = max_health;
+        current_health = max_health;
+        temp_health = 0;
+    }
 };
