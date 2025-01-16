@@ -66,10 +66,9 @@ class Entity {
     vector<Feat> Feats;
 
     // Constructors
-    Entity();
-    Entity(vector<string> name_desc, Alignment alignment, int max_health, vector<uint> attr_profbon) {
-        name = name_desc.at(0);
-        descriptor = name_desc.at(1);
+    Entity(string name, string descriptor, Alignment alignment, int max_health, vector<uint> attr_profbon) {
+        name = name;
+        descriptor = descriptor;
         alignment = alignment;
 
         max_health = max_health;
@@ -85,6 +84,7 @@ class Entity {
         wisdom = attr_profbon.at(5);
         charisma = attr_profbon.at(6);
     }
+    Entity();
 };
 
 class Monster : public Entity {

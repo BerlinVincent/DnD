@@ -2,10 +2,10 @@
 
 class Trait {
     string name;
-    vector<int> effect;
+    // incomplete
 };
 
 class Feat {
     string name;
-    vector<Trait> effects;
+    // incomplete
 };
