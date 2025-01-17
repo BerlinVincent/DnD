@@ -2,6 +2,14 @@
 #include "Alignment.hpp"
 #include "Traits_and_Feats.hpp"
 
+int attr_mod(int attribute) {
+    if (attribute % 2 == 0) {
+        return (attribute - 10) / 2;
+    } else {
+        return (attribute - 11) / 2;
+    }
+}
+
 class Entity {
     // Attributes
     // Entity Description
