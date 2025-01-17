@@ -31,6 +31,8 @@ class Attack {
     int attack_bonus;
     int damage;
     DamageType type;
-    TargetType area_of_effect;
+    TargetType AoE;
     int reach;
+    int action_type;
+    int spellslot;
 };

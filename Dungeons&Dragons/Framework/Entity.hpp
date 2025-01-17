@@ -1,13 +1,36 @@
 #include "Attacks_and_Spells.hpp"
 #include "Alignment.hpp"
+#include "Skill.hpp"
 
-int attr_mod(int attribute) {
-    if (attribute % 2 == 0) {
-        return (attribute - 10) / 2;
-    } else {
-        return (attribute - 11) / 2;
-    }
-}
+enum Attributes {
+    STR,
+    DEX,
+    CON,
+    INT,
+    WIS,
+    CHA
+};
+
+enum Skills {
+    acrobatics,
+    animal_handling,
+    arcana,
+    athletics,
+    deception,
+    history,
+    insight,
+    intimidation,
+    investigation,
+    medicine,
+    nature,
+    perception,
+    performance,
+    persuasion,
+    religion,
+    sleight_of_hand,
+    stealth,
+    survival
+};
 
 class Entity {
     // Attributes
@@ -26,53 +49,28 @@ class Entity {
     int initiative;
     int speed;
     int passive_wisdom;
-    // Inspiration, Proficiency Bonus, Hit Dice
+    // Inspiration, Proficiency Bonus, Hit Dice, Experience, Level
     bool inspiration;
     uint proficiency_bonus;
     int hit_dice;
+    int experience;
+    int level;
 
     // Entity Game Attributes
-    uint strength;
-    uint dexterity;
-    uint constitution;
-    uint intelligence;
-    uint wisdom;
-    uint charisma;
+    vector<uint> attributes;
 
     // Entity Saving Throws
-    int strength_st;
-    int dexterity_st;
-    int constitution_st;
-    int intelligence_st;
-    int wisdom_st;
-    int charisma_st;
+    vector<int> saving_throws;
 
     //Entity Game Skills
-    int acrobatics;
-    int animal_handling;
-    int arcana;
-    int athletics;
-    int deception;
-    int history;
-    int insight;
-    int intimidation;
-    int investigation;
-    int medicine;
-    int nature;
-    int perception;
-    int performance;
-    int persuasion;
-    int religion;
-    int sleight_of_hand;
-    int stealth;
-    int survival;
+    vector<Skill> skills;
 
     // Entity Abilities, Traits, Feats
     vector<Attack> Attacks_and_Spells;
-    vector<string> Traits_and_Feats;
+    vector<int> Traits_and_Feats;
 
     // Constructors
-    Entity(string name, string descriptor, Alignment alignment, int max_health, vector<uint> attr_profbon) {
+    Entity(string name, string descriptor, Alignment alignment, int max_health, int experience, vector<uint> attributes, uint proficiency_bonus) {
         name = name;
         descriptor = descriptor;
         alignment = alignment;
@@ -81,14 +79,15 @@ class Entity {
         current_health = max_health;
         temp_health = 0;
 
-        proficiency_bonus = attr_profbon.at(0);
+        experience = experience;
 
-        strength = attr_profbon.at(1);
-        dexterity = attr_profbon.at(2);
-        constitution = attr_profbon.at(3);
-        intelligence = attr_profbon.at(4);
-        wisdom = attr_profbon.at(5);
-        charisma = attr_profbon.at(6);
+        proficiency_bonus = proficiency_bonus;
+
+        attributes = attributes;
+
+        for (int i = 0; i < saving_throws.size(); i++) {
+            saving_throws.at(i) = attr_mod(attributes.at(i));
+        }
     }
     Entity();
 };
