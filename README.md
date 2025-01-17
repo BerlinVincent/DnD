@@ -1,4 +1,22 @@
-This is the Repo with all my personal Projects.
-It so far contains:
-- a feature-complete implementation of the game Tic Tac Toe in C++
-- a work-in-progress implementation of an auto-battler based on Dungeons&Dragons
+TODO Liste:
+
+[ ] herausfinden, wie wir die Entity Klasse strukturieren
+    [ ] Entity Saving Throws
+    [ ] Entity Skills
+    [ ] Entity Konstuktor
+
+[ ] Proficiency System implementieren und in Entity Skills integrieren
+    [ ] wie wird Proficiency gespeichert?
+        -/  
+            als bool: wenn eine Entity in einem Skill Proficiency hat ist der zugehörige bool = true
+            -> Nachteil: wir haben für jeden Skill einen zugehörigen bool, den wir immer berücksichtigen müssen
+            in eigener Datentyp: wir schreiben einen eigenen Skill Datentyp, den wir auf verschiedene Eigenschaften auswerten können
+        /-
+    [ ] wie wird Profieciency in die Entity Skills eingerechnet?
+
+[ ] Trait_and_Feat Effekte brainstormen und implementieren
+    -/  
+        Traits und Feats haben teils sehr unterschiedliche Effekte. Wir müssen uns also überlegen, wie wir die Effekte auf die Entities anwenden. Zum Beispiel könnten wir den Entities eine Liste an Traits und Feats geben, die bereits auf sie angewendet wurde, sodass wir die "base stats" von den aktuellen unterscheiden können. Es wäre vielleicht auch praktisch Traits und Feats als String Pair zu speichern; der erste String ist der Name und der zweite ein leichter auswertbarer Effekt-String; z.B. für den [Tavern Brawler](https://dnd5e.wikidot.com/feat:tavern-brawler) Trait: {Tavern Brawler, str:+1<=20_const:+1<=20_proficiency:improvisedweapons_unarmed:d4_bonusaction:grapple:hit:unarmedORimprovisedweapon}
+        Das Format müsste man dann noch festlegen, damit man den String richtig auslesen kann.
+    /-
+    [ ] Traits und Feats funktionieren

@@ -70,8 +70,7 @@ class Entity {
 
     // Entity Abilities, Traits, Feats
     vector<Attack> Attacks_and_Spells;
-    vector<Trait> Traits;
-    vector<Feat> Feats;
+    vector<string> Traits_and_Feats;
 
     // Constructors
     Entity(string name, string descriptor, Alignment alignment, int max_health, vector<uint> attr_profbon) {
