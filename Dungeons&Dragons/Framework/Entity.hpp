@@ -1,6 +1,5 @@
 #include "Attacks_and_Spells.hpp"
 #include "Alignment.hpp"
-#include "Traits_and_Feats.hpp"
 
 int attr_mod(int attribute) {
     if (attribute % 2 == 0) {
