@@ -56,7 +56,17 @@ int calculate_modifier(int attribute) {
 }
 
 int getParentAttribute(string skill) {
-    
+    if (skill == skill_names.at(athletics)) {
+        return STR;
+    } else if (skill == skill_names.at(acrobatics) || skill == skill_names.at(sleight_of_hand) || skill == skill_names.at(stealth)) {
+        return DEX;
+    } else if (skill == skill_names.at(arcana) || skill == skill_names.at(history) || skill == skill_names.at(investigation) || skill == skill_names.at(nature) || skill == skill_names.at(religion)) {
+        return INT;
+    } else if (skill == skill_names.at(animal_handling) || skill == skill_names.at(insight) || skill == skill_names.at(medicine) || skill == skill_names.at(perception) || skill == skill_names.at(survival)) {
+        return WIS;
+    } else if (skill == skill_names.at(deception) || skill == skill_names.at(intimidation) || skill == skill_names.at(performance) || skill == skill_names.at(persuasion)) {
+        return CHA;
+    } else return -1;
 }
 
 class Skill {
@@ -64,12 +74,13 @@ class Skill {
     int modifier;
     bool proficiency;
 
-    Skill(string name, int attribute, bool proficiency) {
-        name = name;
+    public:
+        Skill(string name, int attribute, bool proficiency) {
+            name = name;
 
-        modifier = calculate_modifier(attribute);
-        if (proficiency) modifier += 2;
+            modifier = calculate_modifier(attribute);
+            if (proficiency) modifier += 2;
 
-        proficiency = proficiency;
-    }
+            proficiency = proficiency;
+        }
 };
