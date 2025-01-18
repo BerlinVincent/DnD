@@ -2,36 +2,6 @@
 #include "Alignment.hpp"
 #include "Skill.hpp"
 
-enum Attributes {
-    STR,
-    DEX,
-    CON,
-    INT,
-    WIS,
-    CHA
-};
-
-enum Skills {
-    acrobatics,
-    animal_handling,
-    arcana,
-    athletics,
-    deception,
-    history,
-    insight,
-    intimidation,
-    investigation,
-    medicine,
-    nature,
-    perception,
-    performance,
-    persuasion,
-    religion,
-    sleight_of_hand,
-    stealth,
-    survival
-};
-
 class Entity {
     // Attributes
     // Entity Description
@@ -86,7 +56,12 @@ class Entity {
         attributes = attributes;
 
         for (int i = 0; i < saving_throws.size(); i++) {
-            saving_throws.at(i) = attr_mod(attributes.at(i));
+            saving_throws.at(i) = calculate_modifier(attributes.at(i));
+        }
+
+        for (int i = 0; i < skill_names.size(); i++) {
+            Skill current = Skill(skill_names.at(i), getParentAttribute(skill_names.at(i)), false);
+            skills.push_back(current);
         }
     }
     Entity();
