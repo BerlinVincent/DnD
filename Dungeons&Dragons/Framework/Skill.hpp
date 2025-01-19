@@ -1,36 +1,13 @@
 #include "inclusions.hpp"
-
-enum Attributes {
-    STR,
-    DEX,
-    CON,
-    INT,
-    WIS,
-    CHA
-};
-
-vector<string> skill_names = {
-    "acrobatics",
-    "animal_handling",
-    "arcana",
-    "athletics",
-    "deception",
-    "history",
-    "insight",
-    "intimidation",
-    "investigation",
-    "medicine",
-    "nature",
-    "perception",
-    "performance",
-    "persuasion",
-    "religion",
-    "sleight_of_hand",
-    "stealth",
-    "survival"
-};
+#include "Attribute.hpp"
 
 enum Skills {
+    STR_st,
+    DEX_st,
+    CON_st,
+    INT_st,
+    WIS_st,
+    CHA_st,
     acrobatics,
     animal_handling,
     arcana,
@@ -51,36 +28,30 @@ enum Skills {
     survival
 };
 
-int calculate_modifier(int attribute) {
-    return (attribute - 10) / 2;
-}
-
-int getParentAttribute(string skill) {
-    if (skill == skill_names.at(athletics)) {
-        return STR;
-    } else if (skill == skill_names.at(acrobatics) || skill == skill_names.at(sleight_of_hand) || skill == skill_names.at(stealth)) {
-        return DEX;
-    } else if (skill == skill_names.at(arcana) || skill == skill_names.at(history) || skill == skill_names.at(investigation) || skill == skill_names.at(nature) || skill == skill_names.at(religion)) {
-        return INT;
-    } else if (skill == skill_names.at(animal_handling) || skill == skill_names.at(insight) || skill == skill_names.at(medicine) || skill == skill_names.at(perception) || skill == skill_names.at(survival)) {
-        return WIS;
-    } else if (skill == skill_names.at(deception) || skill == skill_names.at(intimidation) || skill == skill_names.at(performance) || skill == skill_names.at(persuasion)) {
-        return CHA;
-    } else return -1;
-}
-
+/**
+ * @brief A class implementing the Skills a character can have in Dungeons&Dragons.
+ * @authors BerlinVincent
+ */
 class Skill {
     string name;
-    int modifier;
+    Attribute parent_attribute;
+    int skill_mod;
     bool proficiency;
 
     public:
-        Skill(string name, int attribute, bool proficiency) {
+        string getName() {return name;}
+        Attribute getPAttr() {return parent_attribute;}
+        int getMod() {return skill_mod;}
+        bool hasProf() {return proficiency;};
+
+        Skill() = default;
+        Skill(string name, Attribute attribute, bool proficiency) {
             name = name;
 
-            modifier = calculate_modifier(attribute);
-            if (proficiency) modifier += 2;
-
+            parent_attribute = attribute;
             proficiency = proficiency;
-        }
+
+            skill_mod = parent_attribute.getMod();
+            if (proficiency) skill_mod += 2;
+        };
 };
