@@ -1,5 +1,6 @@
 #include "Attacks_and_Spells.hpp"
 #include "Alignment.hpp"
+#include "Attribute.hpp"
 #include "Skill.hpp"
 
 class Entity {
@@ -27,10 +28,10 @@ class Entity {
     int level;
 
     // Entity Game Attributes
-    vector<uint> attributes;
+    vector<Attribute> attributes;
 
     // Entity Saving Throws
-    vector<int> saving_throws;
+    vector<Skill> saving_throws;
 
     //Entity Game Skills
     vector<Skill> skills;
@@ -40,7 +41,7 @@ class Entity {
     vector<int> Traits_and_Feats;
 
     // Constructors
-    Entity(string name, string descriptor, Alignment alignment, int max_health, int experience, vector<uint> attributes, uint proficiency_bonus) {
+    Entity(string name, string descriptor, Alignment alignment, int max_health, int experience, uint proficiency_bonus, vector<int> new_attributes, vector<bool> proficiencies) {
         name = name;
         descriptor = descriptor;
         alignment = alignment;
@@ -53,16 +54,44 @@ class Entity {
 
         proficiency_bonus = proficiency_bonus;
 
-        attributes = attributes;
+        attributes = {
+            Attribute("STR", new_attributes.at(STR)),
+            Attribute("DEX", new_attributes.at(DEX)),
+            Attribute("CON", new_attributes.at(CON)),
+            Attribute("INT", new_attributes.at(INT)),
+            Attribute("WIS", new_attributes.at(WIS)),
+            Attribute("CHA", new_attributes.at(CHA)),
+        };
 
-        for (int i = 0; i < saving_throws.size(); i++) {
-            saving_throws.at(i) = calculate_modifier(attributes.at(i));
-        }
+        saving_throws = {
+            Skill("STR_st", attributes.at(STR), proficiencies.at(STR_st)),
+            Skill("DEX_st", attributes.at(DEX), proficiencies.at(DEX_st)),
+            Skill("CON_st", attributes.at(CON), proficiencies.at(CON_st)),
+            Skill("INT_st", attributes.at(INT), proficiencies.at(INT_st)),
+            Skill("WIS_st", attributes.at(WIS), proficiencies.at(WIS_st)),
+            Skill("CHA_st", attributes.at(CHA), proficiencies.at(CHA_st)),
+        };
 
-        for (int i = 0; i < skill_names.size(); i++) {
-            Skill current = Skill(skill_names.at(i), getParentAttribute(skill_names.at(i)), false);
-            skills.push_back(current);
-        }
+        skills = {
+            Skill("acrobatics",         attributes.at(DEX), proficiencies.at(acrobatics)),
+            Skill("animal_handling",    attributes.at(WIS), proficiencies.at(animal_handling)),
+            Skill("arcana",             attributes.at(INT), proficiencies.at(arcana)),
+            Skill("athletics",          attributes.at(STR), proficiencies.at(athletics)),
+            Skill("deception",          attributes.at(CHA), proficiencies.at(deception)),
+            Skill("history",            attributes.at(INT), proficiencies.at(history)),
+            Skill("insight",            attributes.at(WIS), proficiencies.at(insight)),
+            Skill("intimidation",       attributes.at(CHA), proficiencies.at(intimidation)),
+            Skill("investigation",      attributes.at(INT), proficiencies.at(investigation)),
+            Skill("medicine",           attributes.at(WIS), proficiencies.at(medicine)),
+            Skill("nature",             attributes.at(INT), proficiencies.at(nature)),
+            Skill("perception",         attributes.at(WIS), proficiencies.at(perception)),
+            Skill("performance",        attributes.at(CHA), proficiencies.at(performance)),
+            Skill("persuasion",         attributes.at(CHA), proficiencies.at(persuasion)),
+            Skill("religion",           attributes.at(INT), proficiencies.at(religion)),
+            Skill("sleight_of_hand",    attributes.at(DEX), proficiencies.at(sleight_of_hand)),
+            Skill("stealth",            attributes.at(DEX), proficiencies.at(stealth)),
+            Skill("survival",           attributes.at(WIS), proficiencies.at(survival))
+        };
     }
     Entity();
 };
