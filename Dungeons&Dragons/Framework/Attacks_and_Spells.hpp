@@ -19,6 +19,9 @@ enum DamageType {
     PSYCHIC
 };
 
+/** 
+* @brief An enum for the different Targeting Types of Dungeons&Dragons
+*/
 enum TargetType {
     SINGLE,
     MULTI,
@@ -29,6 +32,11 @@ enum TargetType {
     CYLINDER
 };
 
+/**
+* @brief A class for Attacks and Spells
+* @details While Weapon Attacks are rather simple, Spells can have very different effects. We probably need to implement an Effect class at some point.
+* @author BerlinVincent
+*/
 class Attack {
     string name;
     int attack_bonus;
