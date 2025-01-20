@@ -3,18 +3,14 @@
 
 #include "Renderer.hpp"
 namespace game {
-    class Game
-    {
-        render::Renderer &renderer;
+class Game {
+    render::Renderer &renderer;
 
-    public:
-        Game(render::Renderer &renderer)
-            : renderer(renderer)
-        {
+   public:
+    Game(render::Renderer &renderer)
+        : renderer(renderer) {
+    }
+};
+}  // namespace game
 
-        }
-    };
-}
-
-
-#endif // GAME_H_
+#endif  // GAME_H_

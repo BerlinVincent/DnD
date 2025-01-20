@@ -4,33 +4,30 @@
 #include <variant>
 namespace scenes {
 
-    /*
-    ** Game divided into Scenes
-    ** COMBAT    - Game is in Combat State
-    ** EXPLORE   - Player is exploring Dungeon Room
-    ** INVENTORY - Inventory View
-    */
-    class Scene
-    {
-
-        struct Combat
-        {
+    /**
+     * @brief A class for the different Game Scenes
+     * @details The Game is divided into Scenes
+     *          COMBAT    - Game is in Combat State
+     *          EXPLORE   - Player is exploring Dungeon Room
+     *          INVENTORY - Inventory View
+     * @authors PeterfoxUwU
+     */
+    class Scene {
+        struct Combat {
             // enemy Grid
             // background img
         };
 
-        struct Explore
-        {
+        struct Explore {
             // 2D Room Map
         };
 
-        struct Inventory
-        {
+        struct Inventory {
             // items
         };
 
         std::variant<Combat, Explore, Inventory> scene;
     };
-}
+}  // namespace scenes
 
-#endif // SCENES_H_
+#endif  // SCENES_H_

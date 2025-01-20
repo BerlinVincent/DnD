@@ -5,12 +5,10 @@
 #include "Scenes.hpp"
 namespace render {
 
-    class Renderer
-    {
+    class Renderer {
         virtual auto render(const game::Player &player,
                             const scenes::Scene &) -> bool;
     };
-}
+}  // namespace render
 
-
-#endif // RENDERER_H_
+#endif  // RENDERER_H_

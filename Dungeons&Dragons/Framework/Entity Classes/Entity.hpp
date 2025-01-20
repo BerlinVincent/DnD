@@ -13,16 +13,14 @@
 */
 class Entity {
     // Attributes
-    // Entity Description
     string name;
     string descriptor;
-    Alignment alignment;    
+    Alignment alignment;
 
     // Active Entity Game Attributes
-    // Health
-    int max_health;
-    int current_health;
-    int temp_health;
+    int max_hp;
+    int current_hp;
+    int temp_hp;
     // AC, Initiative, Speed, Passive Wisdom
     int armor_class;
     int initiative;
@@ -49,14 +47,14 @@ class Entity {
         
         // Constructors
         Entity() = default;
-        Entity(string name, string descriptor, Alignment alignment, int max_health, int experience, uint proficiency_bonus, vector<int> attributes, vector<bool> proficiencies) {
+        Entity(string name, string descriptor, Alignment alignment, int max_hp, int experience, uint proficiency_bonus, vector<int> attributes, vector<bool> proficiencies) {
             this->name = name;
             this->descriptor = descriptor;
             this->alignment = alignment;
 
-            this->max_health = max_health;
-            this->current_health = max_health;
-            this->temp_health = 0;
+            this->max_hp = max_hp;
+            this->current_hp = max_hp;
+            this->temp_hp = 0;
 
             this->experience = experience;
 

@@ -64,4 +64,4 @@ class Skill {
         };
 };
 
-#endif SKILL_H_
+#endif // SKILL_H_
