@@ -4,6 +4,10 @@
 #include "inclusions.hpp"
 #include "Attribute.hpp"
 
+/**
+* @brief An enum for the Skills and Saving Throws of Dungeons&Dragons
+* @details Saving Throws are included here, since they work very much like Skills.
+*/
 enum Skills {
     STR_st,
     DEX_st,
@@ -32,7 +36,8 @@ enum Skills {
 };
 
 /**
- * @brief A class implementing the Skills a character can have in Dungeons&Dragons.
+ * @brief A class implementing the Skills and Saving Throws a character can have in Dungeons&Dragons.
+ * @details Like the Skill enum, Saving Throws are included due to the similarity to Skills.
  * @authors BerlinVincent
  */
 class Skill {
