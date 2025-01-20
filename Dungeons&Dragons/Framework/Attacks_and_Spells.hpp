@@ -1,5 +1,8 @@
 #include "inclusions.hpp"
 
+/**
+* @brief An enum for the different Damage Types of Dungeons&Dragons
+*/
 enum DamageType {
     PIERCING,
     BLUDEONING,
