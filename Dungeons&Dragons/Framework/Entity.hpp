@@ -5,6 +5,11 @@
 #include "Attribute.hpp"
 #include "Skill.hpp"
 
+/**
+* @brief A class for Entities in the game
+* @details Entities are all kinds of NPCs and PCs. Thus they need to do A LOT: support character statistics and actions, integrate with the game engine and renderer and work with many different parts of the framework.
+* @authors BerlinVincent
+*/
 class Entity {
     // Attributes
     // Entity Description
@@ -98,6 +103,7 @@ class Entity {
     Entity();
 };
 
+// this belongs in its own .hpp file
 class Monster : public Entity {
     public:
         uint challenge;
