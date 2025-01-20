@@ -1,7 +1,7 @@
 #ifndef ALIGNMENT_H_
 #define ALIGNMENT_H_
 
-#include "inclusions.hpp"
+#include "../inclusions.hpp"
 
 /**
 * @brief An enum for the different moral Alignments of Dungeons&Dragons

@@ -1,7 +1,7 @@
 #ifndef ATTACKS_AND_SPELLS_H_
 #define ATTACKS_AND_SPELLS_H_
 
-#include "inclusions.hpp"
+#include "../inclusions.hpp"
 
 /**
 * @brief An enum for the different Damage Types of Dungeons&Dragons

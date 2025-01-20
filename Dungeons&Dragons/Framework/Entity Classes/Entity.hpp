@@ -2,9 +2,9 @@
 #define EINTIY_H_
 
 #include <utility>
-#include "../Attacks_and_Spells.hpp"
-#include "../Alignment.hpp"
-#include "../Skill.hpp"
+#include "../Statistics Classes/Attacks_and_Spells.hpp"
+#include "../Statistics Classes/Alignment.hpp"
+#include "../Statistics Classes/Skill.hpp"
 
 /**
 * @brief A class for Entities in the game
@@ -43,6 +43,10 @@ class Entity {
     vector<int> Traits_and_Feats;
 
     public:
+        string getName() {return name;}
+        string getDesc() {return descriptor;}
+        Alignment getAlign() {return alignment;}
+
         vector<Attribute> getAttributes() {return attributes;}
         
         // Constructors

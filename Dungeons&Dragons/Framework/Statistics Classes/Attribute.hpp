@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTE_H_
 #define ATTRIBUTE_H_
 
-#include "inclusions.hpp"
+#include "../inclusions.hpp"
 
 /**
  * @brief An enum for the order and names of the attributes in Dungeons&Dragons

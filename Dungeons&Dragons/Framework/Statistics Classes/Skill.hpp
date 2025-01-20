@@ -1,7 +1,7 @@
 #ifndef SKILL_H_
 #define SKILL_H_
 
-#include "inclusions.hpp"
+#include "../inclusions.hpp"
 #include "Attribute.hpp"
 
 /**
