@@ -1,6 +1,7 @@
 #ifndef SCENES_H_
 #define SCENES_H_
 
+#include <list>
 #include <variant>
 namespace scenes {
 
@@ -12,7 +13,6 @@ namespace scenes {
     */
     class Scene
     {
-
         struct Combat
         {
             // enemy Grid
@@ -22,6 +22,7 @@ namespace scenes {
         struct Explore
         {
             // 2D Room Map
+            // std::list<> objectives
         };
 
         struct Inventory
@@ -29,6 +30,7 @@ namespace scenes {
             // items
         };
 
+        std::list<std::string> actions;
         std::variant<Combat, Explore, Inventory> scene;
     };
 }

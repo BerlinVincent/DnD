@@ -5,10 +5,10 @@
 namespace game {
     class Game
     {
-        render::Renderer &renderer;
+        render::UI &renderer;
 
     public:
-        Game(render::Renderer &renderer)
+        Game(render::UI &renderer)
             : renderer(renderer)
         {
 

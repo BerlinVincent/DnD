@@ -95,7 +95,6 @@ class Entity {
             Skill("survival",           attributes.at(WIS), proficiencies.at(survival))
         };
     }
-    Entity();
 };
 
 class Monster : public Entity {
