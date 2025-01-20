@@ -1,3 +1,6 @@
+#ifndef ATTRIBUTE_H_
+#define ATTRIBUTE_H_
+
 #include "inclusions.hpp"
 
 /**
@@ -42,3 +45,5 @@ class Attribute {
             recalcMod();
         }
 };
+
+#endif // ATTRIBUTE_H_

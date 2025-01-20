@@ -1,3 +1,6 @@
+#ifndef SKILL_H_
+#define SKILL_H_
+
 #include "inclusions.hpp"
 #include "Attribute.hpp"
 
@@ -46,12 +49,14 @@ class Skill {
 
         Skill() = default;
         Skill(string name, Attribute attribute, bool proficiency) {
-            name = name;
+            this->name = name;
 
-            parent_attribute = attribute;
-            proficiency = proficiency;
+            this->parent_attribute = attribute;
+            this->proficiency = proficiency;
 
-            skill_mod = parent_attribute.getMod();
+            this->skill_mod = parent_attribute.getMod();
             if (proficiency) skill_mod += 2;
         };
 };
+
+#endif SKILL_H_

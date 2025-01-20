@@ -1,7 +1,7 @@
 #ifndef RENDERER_H_
 #define RENDERER_H_
 
-#include "Player.hpp"
+#include "Entity Classes/Player.hpp"
 #include "Scenes.hpp"
 namespace render {
 

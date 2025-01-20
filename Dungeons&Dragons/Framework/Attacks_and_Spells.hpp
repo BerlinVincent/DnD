@@ -1,3 +1,6 @@
+#ifndef ATTACKS_AND_SPELLS_H_
+#define ATTACKS_AND_SPELLS_H_
+
 #include "inclusions.hpp"
 
 enum DamageType {
@@ -36,3 +39,5 @@ class Attack {
     int action_type;
     int spellslot;
 };
+
+#endif ATTACKS_AND_SPELL_H_

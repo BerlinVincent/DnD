@@ -1,3 +1,6 @@
+#ifndef ALIGNMENT_H_
+#define ALIGNMENT_H_
+
 #include "inclusions.hpp"
 
 enum Alignment {
@@ -6,3 +9,5 @@ enum Alignment {
     LAWFULEVIL,     NEUTRALEVIL,    CHAOTICEVIL,
     UNALIGNED
 };
+
+#endif // ALIGNMENT_H_
