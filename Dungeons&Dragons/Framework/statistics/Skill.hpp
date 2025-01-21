@@ -35,7 +35,7 @@ enum Skills {
     survival
 };
 
-/**
+/** Right now a feature for later. 
  * @brief A class implementing the Skills and Saving Throws a character can have in Dungeons&Dragons.
  * @details Like the Skill enum, Saving Throws are included due to the similarity to Skills.
  * @authors BerlinVincent

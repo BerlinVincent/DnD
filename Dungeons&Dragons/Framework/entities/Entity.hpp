@@ -51,7 +51,7 @@ class Entity {
         
         // Constructors
         Entity() = default;
-        Entity(string name, string descriptor, Alignment alignment, int max_hp, int experience, uint proficiency_bonus, vector<int> attributes, vector<bool> proficiencies) {
+        Entity(string name, string descriptor, Alignment alignment, int max_hp, int experience, uint proficiency_bonus, vector<Attribute> attributes, vector<bool> proficiencies) {
             this->name = name;
             this->descriptor = descriptor;
             this->alignment = alignment;
@@ -64,6 +64,9 @@ class Entity {
 
             this->proficiency_bonus = proficiency_bonus;
 
+            this->attributes = attributes;
+            
+            /* Diese Funktionalität wird außerhalb der Klasse ausgelagert.
             vector<string> temp = {"STR", "DEX", "CON", "INT", "WIS", "CHA"};
             for (int i = 0; i < temp.size(); i++) {
                 this->attributes[i] = Attribute(temp[i], attributes.at(i));
@@ -73,6 +76,7 @@ class Entity {
             for (int i = 0; i < temp.size(); i++) {
                 this->saving_throws[i] = Skill(temp[i], this->attributes[i], proficiencies[i]);
             }
+            */
         }
 };
 

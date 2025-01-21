@@ -12,12 +12,13 @@ namespace game {
 
         public:
             using Entity::Entity;
-            Player(string name, string descriptor, Alignment alignment, int max_health, int experience, uint proficiency_bonus, vector<int> attributes, vector<bool> proficiencies)
+            Player(string name, string descriptor, Alignment alignment, int max_health, int experience, uint proficiency_bonus, vector<Attribute> attributes, vector<bool> proficiencies)
             : Entity(name, descriptor, alignment, max_health, experience, proficiency_bonus, attributes, proficiencies) {
 
                 this->inspiration = false;
 
-                // repetitive but idk how to do it better
+                
+                /* Feature for later */
                 this-> skills = {
                     Skill("acrobatics",         getAttributes().at(DEX), proficiencies.at(acrobatics)),
                     Skill("animal_handling",    getAttributes().at(WIS), proficiencies.at(animal_handling)),

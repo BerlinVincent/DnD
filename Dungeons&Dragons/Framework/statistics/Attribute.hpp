@@ -38,15 +38,14 @@ class Attribute {
         int getScore() {return score;}
         int getMod() {return attr_mod;}
 
-        void setName(string new_name) {}
         void recalcMod() {attr_mod = calculate_modifier(score);}
         void scoreImprove() {score += 1;}
         void scoreDiminish() {if(getScore() >= 1) score -= 1;}
 
         Attribute() = default;
-        Attribute(string new_name, int score) {
-            setName(new_name);
-            score = score;
+        Attribute(string name, int score) {
+            this->name = name;
+            this-> score = score;
             recalcMod();
         }
 };
