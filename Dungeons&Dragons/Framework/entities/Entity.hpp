@@ -2,9 +2,9 @@
 #define EINTIY_H_
 
 #include <utility>
-#include "../Statistics Classes/Attacks_and_Spells.hpp"
-#include "../Statistics Classes/Alignment.hpp"
-#include "../Statistics Classes/Skill.hpp"
+#include "../statistics/Attacks_and_Spells.hpp"
+#include "../statistics/Alignment.hpp"
+#include "../statistics/Skill.hpp"
 
 /**
 * @brief A class for Entities in the game
