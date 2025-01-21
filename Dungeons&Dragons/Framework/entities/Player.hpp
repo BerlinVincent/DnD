@@ -17,7 +17,7 @@ namespace game {
 
                 this->inspiration = false;
 
-                // Repetitivity from Entity() strikes once more
+                // repetitive but idk how to do it better
                 this-> skills = {
                     Skill("acrobatics",         getAttributes().at(DEX), proficiencies.at(acrobatics)),
                     Skill("animal_handling",    getAttributes().at(WIS), proficiencies.at(animal_handling)),
