@@ -64,25 +64,15 @@ class Entity {
 
             this->proficiency_bonus = proficiency_bonus;
 
-            // I do not like how repetitive it looks; use for loop somehow?
-            this->attributes = {
-                Attribute("STR", attributes.at(STR)),
-                Attribute("DEX", attributes.at(DEX)),
-                Attribute("CON", attributes.at(CON)),
-                Attribute("INT", attributes.at(INT)),
-                Attribute("WIS", attributes.at(WIS)),
-                Attribute("CHA", attributes.at(CHA)),
-            };
+            vector<string> temp = {"STR", "DEX", "CON", "INT", "WIS", "CHA"};
+            for (int i = 0; i < temp.size(); i++) {
+                this->attributes[i] = Attribute(temp[i], attributes.at(i));
+            }
 
-            // Also repetitive
-            saving_throws = {
-                Skill("STR_st", this->attributes.at(STR), proficiencies.at(STR_st)),
-                Skill("DEX_st", this->attributes.at(DEX), proficiencies.at(DEX_st)),
-                Skill("CON_st", this->attributes.at(CON), proficiencies.at(CON_st)),
-                Skill("INT_st", this->attributes.at(INT), proficiencies.at(INT_st)),
-                Skill("WIS_st", this->attributes.at(WIS), proficiencies.at(WIS_st)),
-                Skill("CHA_st", this->attributes.at(CHA), proficiencies.at(CHA_st)),
-            };
+            temp = {"STR_st", "DEX_st", "CON_st", "INT_st", "WIS_st", "CHA_st"};
+            for (int i = 0; i < temp.size(); i++) {
+                this->saving_throws[i] = Skill(temp[i], this->attributes[i], proficiencies[i]);
+            }
         }
 };
 
