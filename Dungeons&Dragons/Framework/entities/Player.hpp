@@ -18,7 +18,7 @@ namespace game {
                 this->inspiration = false;
 
                 
-                /* Feature for later */
+                /* Feature for later
                 this-> skills = {
                     Skill("acrobatics",         getAttributes().at(DEX), proficiencies.at(acrobatics)),
                     Skill("animal_handling",    getAttributes().at(WIS), proficiencies.at(animal_handling)),
@@ -38,7 +38,7 @@ namespace game {
                     Skill("sleight_of_hand",    getAttributes().at(DEX), proficiencies.at(sleight_of_hand)),
                     Skill("stealth",            getAttributes().at(DEX), proficiencies.at(stealth)),
                     Skill("survival",           getAttributes().at(WIS), proficiencies.at(survival))
-                };
+                }; */
             }
     };
 }

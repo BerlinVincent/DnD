@@ -1,9 +1,9 @@
 #+TITLE: ToDo Liste
 
-* TODO herausfinden, wie wir die Entity Klasse strukturieren [ ]
+* TODO herausfinden, wie wir die Entity Klasse strukturieren [X]
     - [X] Entity Saving Throws
-    - [ ] Entity Skills
-    - [ ] Entity Konstuktor
+    - [X] Entity Skills --aufgeschoben, Relevanz für Projekt?
+    - [X] Entity Konstuktor
 ** IDEA Hashmaps
 - ähnlich wie gerade
 - constant time lookup :)
@@ -15,7 +15,7 @@
         -/
             - als bool: wenn eine Entity in einem Skill Proficiency hat ist der zugehörige bool = true
                 -> Nachteil: wir haben für jeden Skill einen zugehörigen bool, den wir immer berücksichtigen müssen
-            - in eigener Datentyp: wir schreiben einen eigenen Skill Datentyp, den wir auf verschiedene Eigenschaften auswerten können
+            - in eigenem Datentyp: wir schreiben einen eigenen Skill Datentyp, den wir auf verschiedene Eigenschaften auswerten können
         /-
     - [ ] wie wird Profieciency in die Entity Skills eingerechnet?
 
