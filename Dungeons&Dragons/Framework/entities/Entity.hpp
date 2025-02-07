@@ -60,7 +60,6 @@ class Entity {
         string redescribe(string newdesc) {this->descriptor = newdesc;}
         Alignment realign(Alignment newalign) {this->alignment = newalign;}
         void damage(int damage);
-
         
         // Constructors
 
