@@ -43,41 +43,30 @@ class Entity {
     vector<int> Traits_and_Feats;
 
     public:
+
+        // Get functions
+
         string getName() {return name;}
         string getDesc() {return descriptor;}
         Alignment getAlign() {return alignment;}
-
         vector<Attribute> getAttributes() {return attributes;}
         
         // Constructors
+
         Entity() = default;
-        Entity(string name, string descriptor, Alignment alignment, int max_hp, int experience, uint proficiency_bonus, vector<Attribute> attributes, vector<bool> proficiencies) {
-            this->name = name;
-            this->descriptor = descriptor;
-            this->alignment = alignment;
 
-            this->max_hp = max_hp;
-            this->current_hp = max_hp;
-            this->temp_hp = 0;
+        // Actions (currently placeholders)
 
-            this->experience = experience;
-
-            this->proficiency_bonus = proficiency_bonus;
-
-            this->attributes = attributes;
-            
-            /* Diese Funktionalität wird außerhalb der Klasse ausgelagert.
-            vector<string> temp = {"STR", "DEX", "CON", "INT", "WIS", "CHA"};
-            for (int i = 0; i < temp.size(); i++) {
-                this->attributes[i] = Attribute(temp[i], attributes.at(i));
-            }
-
-            temp = {"STR_st", "DEX_st", "CON_st", "INT_st", "WIS_st", "CHA_st"};
-            for (int i = 0; i < temp.size(); i++) {
-                this->saving_throws[i] = Skill(temp[i], this->attributes[i], proficiencies[i]);
-            }
-            */
-        }
+        void attack(Entity target);
+        void spellcast(Entity target);
+        void dash();
+        void disengage();
+        void dodge();
+        void help(Entity target);
+        void hide();
+        void ready();
+        void search();
+        void useobject();
 };
 
 #endif // ENTITY_H_
