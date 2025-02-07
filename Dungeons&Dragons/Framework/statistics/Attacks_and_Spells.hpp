@@ -41,14 +41,15 @@ enum TargetType {
 * @author BerlinVincent
 */
 class Attack {
-    string name;
-    int attack_bonus;
-    int damage;
-    DamageType type;
-    TargetType AoE;
-    int reach;
-    int action_type;
-    int spellslot;
+    public:
+        string name;
+        int attack_bonus;
+        RANGE damage;
+        DamageType type;
+        TargetType AoE;
+        int reach;
+        int action_type;
+        int spellslot;
 };
 
 #endif ATTACKS_AND_SPELL_H_

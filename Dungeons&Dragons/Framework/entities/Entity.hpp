@@ -8,7 +8,7 @@
 
 /**
 * @brief A class for Entities in the game
-* @details Entities are all kinds of NPCs and PCs. Thus they need to do A LOT: support character statistics and actions, integrate with the game engine and renderer and work with many different parts of the framework.
+* @details Entities are all kinds of NPCs and PCs. Thus they need to do A LOT : support character statistics and actions, integrate with the game engine and renderer and work with many different parts of the framework.
 * @authors BerlinVincent
 */
 class Entity {
@@ -49,13 +49,24 @@ class Entity {
         string getName() {return name;}
         string getDesc() {return descriptor;}
         Alignment getAlign() {return alignment;}
-        vector<Attribute> getAttributes() {return attributes;}
+        Attribute getAttribute(size_t i) {return attributes[i];}
+        vector<Attribute> listAttributes() {return attributes;}
+        Attack getAttack(size_t i) {return Attacks_and_Spells[i];}
+        vector<Attack> listAttacksandSpells() {return Attacks_and_Spells;}
+
+        // Set functions
+
+        string rename(string newname) {this->name = newname;}
+        string redescribe(string newdesc) {this->descriptor = newdesc;}
+        Alignment realign(Alignment newalign) {this->alignment = newalign;}
+        void damage(int damage);
+
         
         // Constructors
 
         Entity() = default;
 
-        // Actions (currently placeholders)
+        // Actions (currently mostly placeholders)
 
         void attack(Entity target);
         void spellcast(Entity target);
