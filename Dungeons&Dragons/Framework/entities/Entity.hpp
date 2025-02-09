@@ -2,6 +2,7 @@
 #define EINTIY_H_
 
 #include <utility>
+#include <unordered_map>
 #include "../statistics/Attacks_and_Spells.hpp"
 #include "../statistics/Alignment.hpp"
 #include "../statistics/Skill.hpp"
@@ -17,6 +18,8 @@ class Entity {
     string descriptor;
     Alignment alignment;
 
+    unordered_map<string, int> class_attributes;
+
     // Active Entity Game Attributes
     int max_hp;
     int current_hp;
@@ -27,7 +30,7 @@ class Entity {
     int speed;
     int passive_wisdom;
     // Proficiency Bonus, Hit Dice, Experience, Level
-    uint proficiency_bonus;
+    int proficiency_bonus;
     int hit_dice;
     int experience;
     int level;
@@ -46,24 +49,34 @@ class Entity {
 
         // Get functions
 
-        string getName() {return name;}
-        string getDesc() {return descriptor;}
-        Alignment getAlign() {return alignment;}
-        Attribute getAttribute(size_t i) {return attributes[i];}
-        vector<Attribute> listAttributes() {return attributes;}
-        Attack getAttack(size_t i) {return Attacks_and_Spells[i];}
-        vector<Attack> listAttacksandSpells() {return Attacks_and_Spells;}
+        string getName();
+        string getDesc();
+        Alignment getAlign();
+        vector<int> getHP();
+        int getAC();
+        int getInitiative();
+        int getSpeed();
+        int getPWis();
+        int getProfBonus();
+        int getHitDice();
+        int getXP();
+        int getLVL();
+        Attribute getAttribute(size_t i);
+        vector<Attribute> listAttributes();
+        Attack getAttack(size_t i);
+        vector<Attack> listAttacksandSpells();
 
         // Set functions
 
-        string rename(string newname) {this->name = newname;}
-        string redescribe(string newdesc) {this->descriptor = newdesc;}
-        Alignment realign(Alignment newalign) {this->alignment = newalign;}
+        string rename(string newname);
+        string redescribe(string newdesc);
+        Alignment realign(Alignment newalign);
         void damage(int damage);
         
         // Constructors
 
         Entity() = default;
+        Entity(unordered_map<string, int>);
 
         // Actions (currently mostly placeholders)
 

@@ -1,5 +1,57 @@
 #include "Entity.hpp"
 
+// Get functions
+
+string Entity::getName() {
+    return name;
+}
+
+string Entity::getDesc() {
+    return descriptor;
+}
+
+Alignment Entity::getAlign() {
+    return alignment;
+}
+
+vector<int> Entity::getHP() {
+    return {max_hp, current_hp, temp_hp};
+}
+
+int Entity::getAC() {
+    return armor_class;
+}
+
+Attribute Entity::getAttribute(size_t i) {
+    return attributes[i];
+}
+
+vector<Attribute> Entity::listAttributes() {
+    return attributes;
+}
+
+Attack Entity::getAttack(size_t i) {
+    return Attacks_and_Spells[i];
+}
+
+vector<Attack> Entity::listAttacksandSpells() {
+    return Attacks_and_Spells;
+}
+
+// Set functions
+
+string Entity::rename(string newname) {
+    this->name = newname;
+}
+
+string Entity::redescribe(string newdesc) {
+    this->descriptor = newdesc;
+}
+
+Alignment Entity::realign(Alignment newalign) {
+    this->alignment = newalign;
+}
+
 void Entity::damage(int damage) {
     // account for temporary hitpoints
     if (temp_hp > 0) {
