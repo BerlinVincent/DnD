@@ -3,6 +3,11 @@
 
 #include "../inclusions.hpp"
 
+struct RANGE {
+    int low;
+    int high;
+};
+
 /**
 * @brief An enum for the different Damage Types of Dungeons&Dragons
 */
@@ -52,4 +57,4 @@ class Attack {
         int spellslot;
 };
 
-#endif ATTACKS_AND_SPELL_H_
+#endif // ATTACKS_AND_SPELL_H_

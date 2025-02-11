@@ -1,5 +1,5 @@
 #ifndef ENTITY_H_
-#define EINTIY_H_
+#define ENTITY_H_
 
 #include <utility>
 #include <unordered_map>
@@ -20,6 +20,7 @@ class Entity {
 
     unordered_map<string, int> class_attributes;
 
+    /* All of this is now supposed to be folded into the class_attributes map
     // Active Entity Game Attributes
     int max_hp;
     int current_hp;
@@ -34,6 +35,7 @@ class Entity {
     int hit_dice;
     int experience;
     int level;
+    */
 
     // Entity Game Attributes
     vector<Attribute> attributes;
@@ -49,9 +51,18 @@ class Entity {
 
         // Get functions
 
+        /**
+         * @brief A get function to get a class attribute from the Attribute Hashmap
+         * @param identifier The string identifier of the attribute
+         * @author BerlinVincent
+         */
+        auto getAttr(string identifier);
+        auto getAttrMap();
+
         string getName();
         string getDesc();
         Alignment getAlign();
+        /* 
         vector<int> getHP();
         int getAC();
         int getInitiative();
@@ -61,6 +72,7 @@ class Entity {
         int getHitDice();
         int getXP();
         int getLVL();
+         */
         Attribute getAttribute(size_t i);
         vector<Attribute> listAttributes();
         Attack getAttack(size_t i);
@@ -68,9 +80,16 @@ class Entity {
 
         // Set functions
 
-        string rename(string newname);
-        string redescribe(string newdesc);
-        Alignment realign(Alignment newalign);
+        void setAttr(string identifier, int value);
+
+        void rename(string newname);
+        void redescribe(string newdesc);
+        void realign(Alignment newalign);
+        /**
+         * @brief A function to apply damage to an Entity
+         * @param damage The amount of damage to be applied
+         * @author BerlinVincent
+         */
         void damage(int damage);
         
         // Constructors
@@ -80,6 +99,12 @@ class Entity {
 
         // Actions (currently mostly placeholders)
 
+        /**
+         * @brief A function to attack a target Entity.
+         * (Would currently only work for single targeting)
+         * @param target Attack's Entity target
+         * @author BerlinVincent
+         */
         void attack(Entity target);
         void spellcast(Entity target);
         void dash();

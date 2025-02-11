@@ -2,6 +2,14 @@
 
 // Get functions
 
+auto Entity::getAttr(string attr_name) {
+    return class_attributes[attr_name];
+}
+
+auto Entity::getAttrMap() {
+    return class_attributes;
+}
+
 string Entity::getName() {
     return name;
 }
@@ -14,6 +22,7 @@ Alignment Entity::getAlign() {
     return alignment;
 }
 
+/* 
 vector<int> Entity::getHP() {
     return {max_hp, current_hp, temp_hp};
 }
@@ -21,6 +30,7 @@ vector<int> Entity::getHP() {
 int Entity::getAC() {
     return armor_class;
 }
+ */
 
 Attribute Entity::getAttribute(size_t i) {
     return attributes[i];
@@ -40,33 +50,37 @@ vector<Attack> Entity::listAttacksandSpells() {
 
 // Set functions
 
-string Entity::rename(string newname) {
+void Entity::setAttr(string identifier, int value) {
+    class_attributes[identifier] = value;
+}
+
+void Entity::rename(string newname) {
     this->name = newname;
 }
 
-string Entity::redescribe(string newdesc) {
+void Entity::redescribe(string newdesc) {
     this->descriptor = newdesc;
 }
 
-Alignment Entity::realign(Alignment newalign) {
+void Entity::realign(Alignment newalign) {
     this->alignment = newalign;
 }
 
 void Entity::damage(int damage) {
     // account for temporary hitpoints
-    if (temp_hp > 0) {
-        temp_hp -= damage;
+    if (getAttr("temp_hp") > 0) {
+        setAttr("temp_hp", getAttr("temp_hp") - damage);
     }
     // rebalance hitpoints
-    if (temp_hp < 0) {
-        current_hp += temp_hp;
-        temp_hp -= temp_hp;
+    if (getAttr("temp_hp") < 0) {
+        setAttr("current_hp", getAttr("current_hp") + getAttr("temp_hp"));
+        setAttr("temp_hp", 0);
     }
 }
 
 void Entity::attack(Entity target) {
     // roll a d20 to hit
-    if (rand() % 20 < target.armor_class) {
+    if (rand() % 20 < target.getAttr("armor_class")) {
         std::cout << "Attack did not hit!" << endl;
         return;
     }
