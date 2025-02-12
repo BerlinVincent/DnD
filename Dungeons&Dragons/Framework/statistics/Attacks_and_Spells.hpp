@@ -13,7 +13,7 @@ struct RANGE {
 */
 enum DamageType {
     PIERCING,
-    BLUDEONING,
+    BLUDGEONING,
     SLASHING,
     COLD,
     FIRE,
@@ -58,14 +58,14 @@ class Attack {
         int action_type;
         int spellslot;
         */
-        auto get(string key) {
+        auto get(const string& key) {
             return attributes[key];
         }
-        void set(string key, any value) {
+        void set(const string& key, const any &value) {
             attributes[key] = value;
         }
 
         Attack() = default;
 };
 
-#endif // ATTACKS_AND_SPELL_H_
+#endif // ATTACKS_AND_SPELLS_H_

@@ -35,13 +35,10 @@ class Entity {
     int experience;
     int level;
     */
-
     // Entity Game Attributes
     vector<Attribute> attributes;
-
     // Entity Saving Throws
     vector<Skill> saving_throws;
-
     // Entity Abilities, Traits, Feats
     vector<Attack> Attacks_and_Spells;
     vector<int> Traits_and_Feats;
@@ -55,7 +52,7 @@ class Entity {
          * @param key The string identifier of the attribute
          * @author BerlinVincent
          */
-        auto get(string key);
+        auto get(const string& key);
         unordered_map<string, any> getMap();
 
         /* old get functions
@@ -76,11 +73,12 @@ class Entity {
         Attribute getAttribute(size_t i);
         vector<Attribute> listAttributes();
         Attack getAttack(size_t i);
-        vector<Attack> listAttacksandSpells();
+        vector<Attack> listAttacksAndSpells();
 
         // Set functions
 
-        void setAttr(string key, any value);
+        void setAttr(const string& key, const any &value);
+        void addAttack(Attack attack);
 
         /* old set functions
         void rename(string newname);
@@ -98,7 +96,7 @@ class Entity {
         // Constructors
 
         Entity() = default;
-        Entity(unordered_map<string, int>);
+        Entity(unordered_map<string, any> map);
 
         // Actions (currently mostly placeholders)
 
@@ -117,7 +115,7 @@ class Entity {
         void hide();
         void ready();
         void search();
-        void useobject();
+        void useObject();
 };
 
 #endif // ENTITY_H_

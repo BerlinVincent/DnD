@@ -6,36 +6,49 @@
  * @returns 1 if successful
  */
 int test() {
-    Entity testE1 = Entity();
-    Entity testE2 = Entity();
+    Attack punch = Attack();
+    pair<int, int> punch_range = {1, 3};
+    punch.set("name", "punch");
+    punch.set("attack_bonus", 0);
+    punch.set("damage", punch_range);
+    punch.set("type", BLUDGEONING);
 
-    testE1.setAttr("max_hp", 10);
-    testE1.setAttr("current_hp", 10);
-    testE1.setAttr("temp_hp", 0);
-    testE1.setAttr("armor_class", 10);
+    unordered_map<string, any> data;
+    data["max_hp"] = 10;
+    data["current_hp"] = 10;
+    data["temp_hp"] = 0;
+    data["armor_class"] = 3;
+
+    Entity testE1 = Entity(data);
+    Entity testE2 = Entity(data);
+
+    testE1.addAttack(punch);
 
     cout << "---------------\n" << "Test Entity 1:" << endl;
     unordered_map<string, any> map = testE1.getMap();
-    for(auto elem : map) {
-        cout << elem.first << " " << any_cast<int>(elem.second) << endl;
+    for(auto [first, second] : map) {
+        cout << first << " " << any_cast<int>(second) << endl;
     }
-
-    testE2.setAttr("max_hp", 10);
-    testE2.setAttr("current_hp", 10);
-    testE2.setAttr("temp_hp", 0);
-    testE2.setAttr("armor_class", 10);
-
     cout << "---------------\n" << "Test Entity 2:" << endl;
     map = testE2.getMap();
-    for(auto elem : map) {
-        cout << elem.first << " " << any_cast<int>(elem.second) << endl;
+    for(auto [first, second] : map) {
+        cout << first << " " << any_cast<int>(second) << endl;
     }
-
     cout << "---------------" << endl;
 
-    Attack punch = Attack();
-    punch.set("name", "punch");
-    punch.set("attack_bonus", 0);
+    testE1.attack(testE2);
+
+    cout << "---------------\n" << "Test Entity 1:" << endl;
+    map = testE1.getMap();
+    for(auto [first, second] : map) {
+        cout << first << " " << any_cast<int>(second) << endl;
+    }
+    cout << "---------------\n" << "Test Entity 2:" << endl;
+    map = testE2.getMap();
+    for(auto [first, second] : map) {
+        cout << first << " " << any_cast<int>(second) << endl;
+    }
+    cout << "---------------" << endl;
 
     return 0;
 }
