@@ -46,7 +46,9 @@ enum TargetType {
 * @author BerlinVincent
 */
 class Attack {
+    unordered_map<string, any> attributes;
     public:
+        /*
         string name;
         int attack_bonus;
         RANGE damage;
@@ -55,6 +57,15 @@ class Attack {
         int reach;
         int action_type;
         int spellslot;
+        */
+        auto get(string key) {
+            return attributes[key];
+        }
+        void set(string key, any value) {
+            attributes[key] = value;
+        }
+
+        Attack() = default;
 };
 
 #endif // ATTACKS_AND_SPELL_H_

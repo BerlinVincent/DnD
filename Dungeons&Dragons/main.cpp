@@ -15,9 +15,9 @@ int test() {
     testE1.setAttr("armor_class", 10);
 
     cout << "---------------\n" << "Test Entity 1:" << endl;
-    unordered_map<string, int> map = testE1.getAttrMap();
+    unordered_map<string, any> map = testE1.getMap();
     for(auto elem : map) {
-        cout << elem.first << " " << elem.second << endl;
+        cout << elem.first << " " << any_cast<int>(elem.second) << endl;
     }
 
     testE2.setAttr("max_hp", 10);
@@ -26,12 +26,17 @@ int test() {
     testE2.setAttr("armor_class", 10);
 
     cout << "---------------\n" << "Test Entity 2:" << endl;
-    map = testE2.getAttrMap();
+    map = testE2.getMap();
     for(auto elem : map) {
-        cout << elem.first << " " << elem.second << endl;
+        cout << elem.first << " " << any_cast<int>(elem.second) << endl;
     }
 
     cout << "---------------" << endl;
+
+    Attack punch = Attack();
+    punch.set("name", "punch");
+    punch.set("attack_bonus", 0);
+
     return 0;
 }
 

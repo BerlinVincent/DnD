@@ -13,14 +13,13 @@
 * @authors BerlinVincent
 */
 class Entity {
-    // Attributes
+    // Attributes of the Entity
+    unordered_map<string, any> entity_attributes;
+
+    /* All of this is now supposed to be folded into the entity_attributes map
     string name;
     string descriptor;
     Alignment alignment;
-
-    unordered_map<string, int> class_attributes;
-
-    /* All of this is now supposed to be folded into the class_attributes map
     // Active Entity Game Attributes
     int max_hp;
     int current_hp;
@@ -52,17 +51,17 @@ class Entity {
         // Get functions
 
         /**
-         * @brief A get function to get a class attribute from the Attribute Hashmap
-         * @param identifier The string identifier of the attribute
+         * @brief A get function to get a class attribute from the entity_attributes Hashmap
+         * @param key The string identifier of the attribute
          * @author BerlinVincent
          */
-        auto getAttr(string identifier);
-        auto getAttrMap();
+        auto get(string key);
+        unordered_map<string, any> getMap();
 
+        /* old get functions
         string getName();
         string getDesc();
         Alignment getAlign();
-        /* 
         vector<int> getHP();
         int getAC();
         int getInitiative();
@@ -72,7 +71,8 @@ class Entity {
         int getHitDice();
         int getXP();
         int getLVL();
-         */
+        */
+
         Attribute getAttribute(size_t i);
         vector<Attribute> listAttributes();
         Attack getAttack(size_t i);
@@ -80,11 +80,14 @@ class Entity {
 
         // Set functions
 
-        void setAttr(string identifier, int value);
+        void setAttr(string key, any value);
 
+        /* old set functions
         void rename(string newname);
         void redescribe(string newdesc);
         void realign(Alignment newalign);
+        */
+
         /**
          * @brief A function to apply damage to an Entity
          * @param damage The amount of damage to be applied
