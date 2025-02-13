@@ -13,10 +13,6 @@
 * @authors BerlinVincent
 */
 class Entity {
-    // string Class Attributes of the Entity
-    I_map<string> entity_description;
-    // int Class Attributes of the Entity
-    I_map<int> entity_statistics;
 
     /* All of this is now supposed to be folded into the maps above
     string name;
@@ -47,6 +43,11 @@ class Entity {
     vector<int> Traits_and_Feats;
 
     public:
+    
+        // string Class Attributes of the Entity
+        I_map<string> entity_description;
+        // int Class Attributes of the Entity
+        I_map<int> entity_statistics;
 
         // Get functions
         /* old get functions

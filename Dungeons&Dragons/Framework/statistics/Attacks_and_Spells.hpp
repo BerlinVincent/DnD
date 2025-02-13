@@ -2,6 +2,7 @@
 #define ATTACKS_AND_SPELLS_H_
 
 #include "../inclusions.hpp"
+#include <any>
 
 struct RANGE {
     int low;
@@ -46,24 +47,24 @@ enum TargetType {
 * @author BerlinVincent
 */
 class Attack {
-    unordered_map<string, any> attributes;
+    string name;
+    int attack_bonus;
+    RANGE damage_range;
+    DamageType type;
+    TargetType AoE;
+    int reach;
+    int action_type;
+    int spellslot;
+
     public:
-        /*
-        string name;
-        int attack_bonus;
-        RANGE damage_range;
-        DamageType type;
-        TargetType AoE;
-        int reach;
-        int action_type;
-        int spellslot;
-        */
-        auto get(const string& key) {
-            return attributes[key];
-        }
-        void set(const string& key, const any &value) {
-            attributes[key] = value;
-        }
+        string getName();
+        int getAtkBonus();
+        RANGE getDamageRange();
+        DamageType getType();
+        TargetType getTargetType();
+        int getReach();
+        int getActionType();
+        int getSpellslot();
 };
 
 #endif // ATTACKS_AND_SPELLS_H_
