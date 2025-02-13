@@ -42,7 +42,7 @@ enum Skills {
  */
 class Skill {
     string name;
-    Attribute parent_attribute;
+    Attribute& parent_attribute;
     int skill_mod;
     bool proficiency;
 
@@ -53,13 +53,9 @@ class Skill {
         bool hasProf() {return proficiency;};
 
         Skill() = default;
-        Skill(string name, Attribute attribute, bool proficiency) {
-            this->name = name;
-
-            this->parent_attribute = attribute;
-            this->proficiency = proficiency;
-
-            this->skill_mod = parent_attribute.getMod();
+        Skill(string name, Attribute& attribute, bool proficiency) 
+            : name(name), parent_attribute(attribute), proficiency(proficiency) {
+            skill_mod = parent_attribute.getMod();
             if (proficiency) skill_mod += 2;
         };
 };
