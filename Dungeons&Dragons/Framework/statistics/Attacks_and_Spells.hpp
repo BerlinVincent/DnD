@@ -57,14 +57,14 @@ class Attack {
     int spellslot;
 
     public:
-        string getName();
-        int getAtkBonus();
-        RANGE getDamageRange();
-        DamageType getType();
-        TargetType getTargetType();
-        int getReach();
-        int getActionType();
-        int getSpellslot();
+        auto getName() -> string;
+        auto getAtkBonus() -> int;
+        auto getDamageRange() -> RANGE;
+        auto getType() -> DamageType;
+        auto getTargetType() -> TargetType;
+        auto getReach() -> int;
+        auto getActionType() -> int;
+        auto getSpellslot() -> int;
 };
 
 #endif // ATTACKS_AND_SPELLS_H_

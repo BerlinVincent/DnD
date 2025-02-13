@@ -3,8 +3,6 @@
 
 #include "Scenes.hpp"
 namespace game {
-
-
   class State {
     // player
     scenes::Scene current;

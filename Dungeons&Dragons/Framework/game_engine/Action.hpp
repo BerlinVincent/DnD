@@ -15,16 +15,16 @@ class Action {
      * @returns boolean whether the function executed correctly
      * @author BerlinVincent
      */
-    bool attack(Entity &attacker, Entity &target);
-    bool spellcast(Entity target);
-    bool dash();
-    bool disengage();
-    bool dodge();
-    bool help(Entity target);
-    bool hide();
-    bool ready();
-    bool search();
-    bool useObject();
+   auto attack(Entity &attacker, Entity &target) -> bool;
+   auto spellcast(Entity target) -> auto;
+   auto dash() -> bool;
+   auto disengage() -> bool;
+   auto dodge() -> bool;
+   auto help(Entity target) -> bool;
+   auto hide() -> bool;
+   auto ready() -> bool;
+   auto search() -> bool;
+   auto useObject() -> bool;
 };
 
 #endif // ACTION_H_

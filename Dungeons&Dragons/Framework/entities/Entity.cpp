@@ -23,19 +23,19 @@ int Entity::getAC() {
 }
 */
 
-Attribute Entity::getAttribute(const size_t i) {
+auto Entity::getAttribute(const size_t i) -> Attribute {
     return attributes[i];
 }
 
-vector<Attribute> Entity::listAttributes() {
+auto Entity::listAttributes() -> vector<Attribute> {
     return attributes;
 }
 
-Attack Entity::getAttack(size_t i) {
+auto Entity::getAttack(size_t i) -> Attack {
     return Attacks_and_Spells[i];
 }
 
-vector<Attack> Entity::listAttacksAndSpells() {
+auto Entity::listAttacksAndSpells() -> vector<Attack> {
     return Attacks_and_Spells;
 }
 

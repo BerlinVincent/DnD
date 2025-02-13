@@ -1,13 +1,12 @@
 #ifndef RENDERER_H_
 #define RENDERER_H_
 
-#include "entities/Player.hpp"
+#include "../entities/Entity.cpp"
 #include "Scenes.hpp"
 namespace render {
 
     class Renderer {
-        virtual auto render(const game::Player &player,
-                            const scenes::Scene &) -> bool;
+        virtual auto render(const Entity &player,const scenes::Scene &) -> bool;
     };
 }  // namespace render
 

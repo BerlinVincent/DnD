@@ -47,10 +47,10 @@ class Skill {
     bool proficiency;
 
     public:
-        string getName() {return name;}
-        Attribute getPAttr() {return parent_attribute;}
-        int getMod() {return skill_mod;}
-        bool hasProf() {return proficiency;};
+        auto getName() -> string;
+        auto getPAttr() -> Attribute;
+        auto getMod() -> int;
+        auto hasProf() -> bool;
 
         Skill() = default;
         Skill(string name, Attribute& attribute, bool proficiency) 

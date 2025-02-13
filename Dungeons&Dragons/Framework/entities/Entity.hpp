@@ -65,10 +65,10 @@ class Entity {
         int getLVL();
         */
 
-        Attribute getAttribute(size_t i);
-        vector<Attribute> listAttributes();
-        Attack getAttack(size_t i);
-        vector<Attack> listAttacksAndSpells();
+        auto getAttribute(size_t i) -> Attribute;
+        auto listAttributes() -> vector<Attribute>;
+        auto getAttack(size_t i) -> Attack;
+        auto listAttacksAndSpells() -> vector<Attack>;
 
         // Set functions
 

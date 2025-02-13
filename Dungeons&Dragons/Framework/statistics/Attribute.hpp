@@ -34,18 +34,17 @@ class Attribute {
     int attr_mod;
 
     public:
-        string getName() {return name;}
-        int getScore() {return score;}
-        int getMod() {return attr_mod;}
+        auto getName() -> string;
+        auto getScore() -> int;
+        auto getMod() -> int;
 
-        void recalcMod() {attr_mod = calculate_modifier(score);}
-        void scoreImprove() {score += 1;}
-        void scoreDiminish() {if(getScore() >= 1) score -= 1;}
+        void recalcMod();
+        void scoreImprove();
+        void scoreDiminish();
 
         Attribute() = default;
-        Attribute(string name, int score) {
-            this->name = name;
-            this->score = score;
+        Attribute(string name, int score) 
+            : name(name), score(score) {
             recalcMod();
         }
 };
