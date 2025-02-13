@@ -45,7 +45,7 @@ class Attribute {
         Attribute() = default;
         Attribute(string name, int score) {
             this->name = name;
-            this-> score = score;
+            this->score = score;
             recalcMod();
         }
 };
