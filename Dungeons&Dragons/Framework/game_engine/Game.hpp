@@ -6,6 +6,8 @@ namespace game {
 class Game {
     render::Renderer &renderer;
 
+    
+
    public:
     Game(render::Renderer &renderer)
         : renderer(renderer) {

@@ -51,7 +51,7 @@ class Attack {
         /*
         string name;
         int attack_bonus;
-        RANGE damage;
+        RANGE damage_range;
         DamageType type;
         TargetType AoE;
         int reach;
@@ -64,8 +64,6 @@ class Attack {
         void set(const string& key, const any &value) {
             attributes[key] = value;
         }
-
-        Attack() = default;
 };
 
 #endif // ATTACKS_AND_SPELLS_H_

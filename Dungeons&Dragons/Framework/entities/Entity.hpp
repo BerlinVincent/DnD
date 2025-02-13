@@ -13,10 +13,12 @@
 * @authors BerlinVincent
 */
 class Entity {
-    // Attributes of the Entity
-    unordered_map<string, any> entity_attributes;
+    // string Class Attributes of the Entity
+    I_map<string> entity_description;
+    // int Class Attributes of the Entity
+    I_map<int> entity_statistics;
 
-    /* All of this is now supposed to be folded into the entity_attributes map
+    /* All of this is now supposed to be folded into the maps above
     string name;
     string descriptor;
     Alignment alignment;
@@ -35,6 +37,7 @@ class Entity {
     int experience;
     int level;
     */
+
     // Entity Game Attributes
     vector<Attribute> attributes;
     // Entity Saving Throws
@@ -46,15 +49,6 @@ class Entity {
     public:
 
         // Get functions
-
-        /**
-         * @brief A get function to get a class attribute from the entity_attributes Hashmap
-         * @param key The string identifier of the attribute
-         * @author BerlinVincent
-         */
-        auto get(const string& key);
-        unordered_map<string, any> getMap();
-
         /* old get functions
         string getName();
         string getDesc();
@@ -77,7 +71,6 @@ class Entity {
 
         // Set functions
 
-        void setAttr(const string& key, const any &value);
         void addAttack(Attack attack);
 
         /* old set functions
@@ -96,26 +89,6 @@ class Entity {
         // Constructors
 
         Entity() = default;
-        Entity(unordered_map<string, any> map);
-
-        // Actions (currently mostly placeholders)
-
-        /**
-         * @brief A function to attack a target Entity.
-         * (Would currently only work for single targeting)
-         * @param target Attack's Entity target
-         * @author BerlinVincent
-         */
-        void attack(Entity target);
-        void spellcast(Entity target);
-        void dash();
-        void disengage();
-        void dodge();
-        void help(Entity target);
-        void hide();
-        void ready();
-        void search();
-        void useObject();
 };
 
 #endif // ENTITY_H_
