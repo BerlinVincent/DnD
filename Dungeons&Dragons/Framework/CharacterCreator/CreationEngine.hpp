@@ -1,0 +1,28 @@
+#ifndef CREATION_ENGINE_H_
+#define CREATION_ENGINE_H_
+
+#include "../inclusions.hpp"
+#include "../entities/Player.cpp"
+#include "../statistics/Skill.cpp"
+#include "../statistics/Attacks_and_Spells.cpp"
+#include "../statistics/Character Class.hpp"
+
+class CreationEngine {
+
+    /**
+     * @brief A function to create an Entity based on data in a file
+     * @param file The file containing the Entity data
+     * @returns The created Entity
+     */
+    auto createEntity(FILE *file) -> Entity&;
+
+    /**
+     * @brief A function to create an Entity in a menu
+     * @returns The created Entity
+     */
+    auto createCustomEntity() -> Entity&;
+
+    
+};
+
+#endif // CREATION_ENGINE_H_

@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include "../statistics/Attacks_and_Spells.hpp"
 #include "../statistics/Alignment.hpp"
-#include "../statistics/Skill.hpp"
+#include "../statistics/Skill.cpp"
 
 /**
 * @brief A class for Entities in the game
@@ -90,6 +90,11 @@ class Entity {
         // Constructors
 
         Entity() = default;
+        Entity(
+            I_map<string> descriptors,
+            I_map<int> statistics,
+            vector<Attribute> attributes
+        );
 };
 
 #endif // ENTITY_H_

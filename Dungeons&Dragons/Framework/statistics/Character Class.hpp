@@ -25,7 +25,8 @@ vector<string> primary_abilities = {
     "CHA",          "CHA",          "INT"
 };
 
-/* vector<Dice> hp_die = {
+/* Example code, kinda how it's supposed to work in the end
+vector<Dice> hp_die = {
     "D12",  "D8",   "D8",
     "D8",   "D10",  "D8",
     "D10",  "D10",  "D8",

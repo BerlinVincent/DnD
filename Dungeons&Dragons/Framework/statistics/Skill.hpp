@@ -2,7 +2,7 @@
 #define SKILL_H_
 
 #include "../inclusions.hpp"
-#include "Attribute.hpp"
+#include "Attribute.cpp"
 
 /**
 * @brief An enum for the Skills and Saving Throws of Dungeons&Dragons
