@@ -1,9 +1,15 @@
+#ifndef INCLUSIONS_H_
+#define INCLUSIONS_H_
 #include <iostream>
 #include <vector>
 
 // Standard inclusions most files would use.
 using namespace std;
 
+/**
+ * @brief An Interface class for operations on a map<string, T>
+ * @tparam T The Type of Element contained in the map
+ */
 template <typename T> class I_map {
 
 private:
@@ -39,3 +45,5 @@ public:
         return map;
     }
 };
+
+#endif // INCLUSIONS_H_

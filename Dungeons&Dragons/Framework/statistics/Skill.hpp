@@ -52,7 +52,6 @@ class Skill {
         auto getMod() -> int;
         auto hasProf() -> bool;
 
-        Skill() = default;
         Skill(string name, Attribute& attribute, bool proficiency) 
             : name(name), parent_attribute(attribute), proficiency(proficiency) {
             skill_mod = parent_attribute.getMod();
