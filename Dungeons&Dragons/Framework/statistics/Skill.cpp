@@ -1,3 +1,6 @@
+#ifndef SKILL_C_
+#define SKILL_C_
+
 #include "Skill.hpp"
 
 auto Skill::getName() -> string {
@@ -15,3 +18,5 @@ auto Skill::getMod() -> int {
 auto Skill::hasProf() -> bool {
     return proficiency;
 }
+
+#endif // SKILL_C_

@@ -1,3 +1,6 @@
+#ifndef ENTITY_C_
+#define ENTITY_C_
+
 #include "Entity.hpp"
 
 // Get functions
@@ -73,3 +76,11 @@ void Entity::damage(int damage) {
         entity_statistics.set("temp_hp", 0);
     }
 }
+
+Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribute> attributes) {
+    entity_description = descriptors;
+    entity_statistics = statistics;
+    this->attributes = attributes;
+}
+
+#endif // ENTITY_C_

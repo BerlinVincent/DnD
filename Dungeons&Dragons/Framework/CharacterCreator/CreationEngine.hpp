@@ -8,21 +8,19 @@
 #include "../statistics/Character Class.hpp"
 
 class CreationEngine {
+    public:
+        /**
+         * @brief A function to create an Entity based on data in a file
+         * @param file The file containing the Entity data
+         * @returns The created Entity
+         */
+        auto createEntity(ifstream &file) -> Entity *;
 
-    /**
-     * @brief A function to create an Entity based on data in a file
-     * @param file The file containing the Entity data
-     * @returns The created Entity
-     */
-    auto createEntity(ifstream &file) -> Entity&;
-
-    /**
-     * @brief A function to create an Entity in a menu
-     * @returns The created Entity
-     */
-    auto createCustomEntity() -> Entity&;
-
-    
+        /**
+         * @brief A function to create an Entity in a menu
+         * @returns The created Entity
+         */
+        auto createCustomEntity() -> Entity *;
 };
 
 #endif // CREATION_ENGINE_H_

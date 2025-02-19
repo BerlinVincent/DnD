@@ -1,3 +1,6 @@
+#ifndef PLAYER_C_
+#define PLAYER_C_
+
 #include "Player.hpp"
 
 auto Player::getClass() -> string& {
@@ -7,3 +10,5 @@ auto Player::getClass() -> string& {
 auto Player::getGear() -> vector<string>& {
     return gear;
 }
+
+#endif // PLAYER_C_
