@@ -14,7 +14,7 @@ class CreationEngine {
      * @param file The file containing the Entity data
      * @returns The created Entity
      */
-    auto createEntity(FILE *file) -> Entity&;
+    auto createEntity(ifstream &file) -> Entity&;
 
     /**
      * @brief A function to create an Entity in a menu

@@ -3,6 +3,7 @@
 
 #include "../entities/Entity.cpp"
 #include "Scenes.hpp"
+
 namespace render {
 
     class Renderer {
