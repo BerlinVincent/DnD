@@ -14,7 +14,7 @@ auto test() -> int {
     // cout << "currently no test code" << endl;
 
     CreationEngine ENGINE;
-    fs::path testpath{"../DungeonsAndDragons/Database/Test_Entity.txt"};
+    fs::path testpath{"./DungeonsAndDragons/Database/Test_Entity.txt"};
 
     cout << "Current working directory: " << fs::current_path() << endl;
 
@@ -27,7 +27,7 @@ auto test() -> int {
 
     Entity *test = ENGINE.createEntity(file);
 
-    test->entity_description.get("name");
+    cout << test->entity_description.get("name") << endl;
 
     delete test;
     file.close();

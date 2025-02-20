@@ -1,11 +1,12 @@
 [name]          : [Test]
 [descriptor]    : [An Entity for testing purposes]
-\n
-[alignment]     : [TRUENEUTRAL]
+
+[alignment]     : [4]
 [max_hp]        : [10]
 [armor_class]   : [8]
 [initiative]    : [8]
 [speed]         : [20]
 [experience]    : [0]
 [level]         : [1]
-\n
+
+[STR]           : [6]

@@ -17,35 +17,40 @@ auto CreationEngine::createEntity(ifstream &file) -> Entity * {
     vector<Attribute> attributes;
 
     // set a reference pattern "[...] : [...]"
-    regex pattern(R"(\[(.+?)\] : \[(.+?)\])");
+    regex pattern_line(R"(\[(.+?)\]\s*:\s*\[(.+?)\])");
+    regex pattern_skip("^\\s*$");
     smatch matches;
 
     size_t block = 0;
 
     while (getline(file, line)) {
-        // check for switch line
-        if (line.empty()) {
-            block++;
-        }
 
-        // check line format
-        if (!regex_match(line, matches, pattern)) {
+        // check data line
+        if (regex_match(line, matches, pattern_line)) {
+
+            // get key and value from line
+            string key = matches[1].str();
+            string value = matches[2].str();
+
+            // insert first 2 pairs into description, the next into statistics, then into Attributes
+            if (block == 0) {
+                description_I_map.set(key, value);
+            } else if (block == 1) {
+                statistics_I_map.set(key, stoi(value));
+            } else if (block == 2) {
+                Attribute temp = Attribute(key, stoi(value));
+                attributes.push_back(temp);
+            }
+
+        }
+        // check for skip line
+        else if(regex_match(line, matches, pattern_skip)) {
+            block++;
+        } 
+        // check for invalid line format
+        else {
             cerr << "invalid line format: " << line << endl;
             exit(1);
-        }
-
-        // get key and value from line
-        string key = matches[1].str();
-        string value = matches[2].str();
-
-        // insert first 2 pairs into description, the next into statistics, then into Attributes
-        if (block == 0) {
-            description_I_map.set(key, value);
-        } else if (block == 1) {
-            statistics_I_map.set(key, stoi(value));
-        } else if (block == 2) {
-            Attribute temp = Attribute(key, stoi(value));
-            attributes.push_back(temp);
         }
     }
 
