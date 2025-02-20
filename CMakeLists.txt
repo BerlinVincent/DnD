@@ -4,6 +4,6 @@ project (DnD)
 include(CTest)
 enable_testing()
 
-add_executable(DnD ./Dungeons&Dragons/main.cpp)
+add_executable(DnD ./DungeonsAndDragons/main.cpp)
 
 set_property(TARGET DnD PROPERTY CXX_STANDARD 20)
