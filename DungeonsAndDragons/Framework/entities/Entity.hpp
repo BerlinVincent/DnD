@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include "../statistics/Attacks_and_Spells.hpp"
 #include "../statistics/Alignment.hpp"
-#include "../statistics/Skill.cpp"
+#include "../statistics/Skill.hpp"
 
 /**
 * @brief A class for Entities in the game

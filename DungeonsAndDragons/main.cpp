@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <filesystem>
-#include "Framework/game_engine/Game.cpp"
-#include "Framework/CharacterCreator/CreationEngine.cpp"
+#include "Framework/game_engine/Game.hpp"
+#include "Framework/CharacterCreator/CreationEngine.hpp"
 
 namespace fs = std::filesystem;
 
@@ -10,6 +9,7 @@ namespace fs = std::filesystem;
  * @brief Function for specific code segment testing, without changing main
  * @returns 1 if successful
  */
+/*
 auto test() -> int {
     // cout << "currently no test code" << endl;
 
@@ -52,11 +52,13 @@ auto test() -> int {
     return 0;
 }
 
+*/
+
 auto main(int argc, char *argv[]) -> int {
     render::Renderer renderer;
     game::Game handler(renderer);
     
-    if(test() != 0) cerr << "Error while testing" << endl;
+    //if(test() != 0) cerr << "Error while testing" << endl;
 
     return 0;
 }

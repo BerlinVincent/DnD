@@ -1,8 +1,8 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-#include "Entity.cpp"
-#include "../statistics/Character Class.hpp"
+#include "Entity.hpp"
+#include "../statistics/Character_Class.hpp"
 
 class Player : public Entity {
     Character_Class player_class;

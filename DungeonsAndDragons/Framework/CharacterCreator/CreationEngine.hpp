@@ -1,11 +1,9 @@
 #ifndef CREATION_ENGINE_H_
 #define CREATION_ENGINE_H_
 
+#include <filesystem>
 #include "../inclusions.hpp"
 #include "../entities/Player.cpp"
-#include "../statistics/Skill.cpp"
-#include "../statistics/Attacks_and_Spells.cpp"
-#include "../statistics/Character Class.hpp"
 
 class CreationEngine {
     public:

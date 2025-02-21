@@ -1,6 +1,3 @@
-#ifndef CREATION_ENGINE_C_
-#define CREATION_ENGINE_C_
-
 #include "CreationEngine.hpp"
 #include <fstream>
 #include <regex>
@@ -58,5 +55,3 @@ auto CreationEngine::createEntity(ifstream &file) -> Entity * {
 
     return entity;
 }
-
-#endif // CREATION_ENGINE_C_

@@ -1,5 +1,9 @@
 #include "Attribute.hpp"
 
+auto calculate_modifier(int attribute) -> int {
+    return (attribute - 10) / 2;
+}
+
 auto Attribute::getName() -> string {
     return name;
 }
@@ -17,9 +21,16 @@ void Attribute::recalcMod() {
 }
 
 void Attribute::scoreImprove() {
-    score += 1;
+    score++;
+    recalcMod();
 }
 
 void Attribute::scoreDiminish() {
-    if(getScore() >= 1) score -= 1;
+    if(getScore() >= 1) score--;
+    recalcMod();
 }
+
+Attribute::Attribute(string name, int score)
+    : name(name), score(score) {
+        recalcMod();
+    }

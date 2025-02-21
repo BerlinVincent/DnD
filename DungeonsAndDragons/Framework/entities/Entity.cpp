@@ -1,6 +1,3 @@
-#ifndef ENTITY_C_
-#define ENTITY_C_
-
 #include "Entity.hpp"
 
 // Get functions
@@ -82,5 +79,3 @@ Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribut
     entity_statistics = statistics;
     this->attributes = attributes;
 }
-
-#endif // ENTITY_C_

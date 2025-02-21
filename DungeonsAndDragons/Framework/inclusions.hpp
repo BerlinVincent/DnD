@@ -1,7 +1,9 @@
 #ifndef INCLUSIONS_H_
 #define INCLUSIONS_H_
+
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 // Standard inclusions most files would use.
 using namespace std;

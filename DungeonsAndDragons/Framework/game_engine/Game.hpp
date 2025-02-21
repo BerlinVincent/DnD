@@ -1,7 +1,7 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#include "Renderer.cpp"
+#include "Renderer.hpp"
 namespace game {
     class Game {
         render::Renderer &renderer;

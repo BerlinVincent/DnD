@@ -1,5 +1,5 @@
-#ifndef ATTRIBUTE_H_
-#define ATTRIBUTE_H_
+#ifndef ATTRIBUTE_HPP_
+#define ATTRIBUTE_HPP_
 
 #include "../inclusions.hpp"
 
@@ -15,13 +15,11 @@ enum Attributes {
     CHA
 };
 
-/** This belongs in a .cpp file
+/**
  * @brief A function to calculate modifiers from attributes.
  * @authors BerlinVincent
  */
-int calculate_modifier(int attribute) {
-    return (attribute - 10) / 2;
-}
+int calculate_modifier(int attribute);
 
 /**
 * @brief A class for character Attributes of Dungeons&Dragons
@@ -43,10 +41,7 @@ class Attribute {
         void scoreDiminish();
 
         Attribute() = default;
-        Attribute(string name, int score) 
-            : name(name), score(score) {
-            recalcMod();
-        }
+        Attribute(string name, int score);
 };
 
-#endif // ATTRIBUTE_H_
+#endif // ATTRIBUTE_HPP_
