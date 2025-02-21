@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/mnt/c/Users/vince/Desktop/GIT/Projects/DnD/build",
-  "command": "/usr/bin/clang++   -g -std=gnu++20 -o \"CMakeFiles/DnD.dir/Dungeons&Dragons/main.cpp.o\" -c \"/mnt/c/Users/vince/Desktop/GIT/Projects/DnD/Dungeons&Dragons/main.cpp\"",
-  "file": "/mnt/c/Users/vince/Desktop/GIT/Projects/DnD/Dungeons&Dragons/main.cpp"
-}
-]
