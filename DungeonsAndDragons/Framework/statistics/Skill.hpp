@@ -41,21 +41,19 @@ enum Skills {
  */
 class Skill {
     string name;
-    Attribute& parent_attribute;
+    Attribute &parent_attribute;
     int skill_mod;
     bool proficiency;
 
     public:
         auto getName() -> string;
-        auto getPAttr() -> Attribute;
+        auto getPAttr() -> Attribute &;
         auto getMod() -> int;
         auto hasProf() -> bool;
 
-        Skill(string name, Attribute& attribute, bool proficiency) 
-            : name(name), parent_attribute(attribute), proficiency(proficiency) {
-            skill_mod = parent_attribute.getMod();
-            if (proficiency) skill_mod += 2;
-        };
+        void recalcMod();
+
+        Skill(string name, Attribute &attribute, bool proficiency);
 };
 
 #endif // SKILL_H_

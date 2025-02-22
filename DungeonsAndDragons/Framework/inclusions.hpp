@@ -46,6 +46,9 @@ public:
     auto getMap() -> unordered_map<string, T> {
         return map;
     }
+
+    I_map<T>() = default;
+    I_map<T>(unordered_map<string, T> map) : map(map) {}
 };
 
 #endif // INCLUSIONS_H_

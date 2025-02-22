@@ -21,12 +21,12 @@ void Attribute::recalcMod() {
 }
 
 void Attribute::scoreImprove() {
-    score++;
+    if(getScore() < 30) score++;
     recalcMod();
 }
 
 void Attribute::scoreDiminish() {
-    if(getScore() >= 1) score--;
+    if(getScore() > 1) score--;
     recalcMod();
 }
 
