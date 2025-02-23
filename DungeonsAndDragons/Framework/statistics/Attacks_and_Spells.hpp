@@ -48,7 +48,7 @@ enum TargetType {
 */
 class Attack {
     string name;
-    int attack_bonus;
+    int enchant_bonus;
     RANGE damage_range;
     DamageType type;
     TargetType AoE;
@@ -58,7 +58,7 @@ class Attack {
 
     public:
         auto getName() -> string;
-        auto getAtkBonus() -> int;
+        auto getEnchantBonus() -> int;
         auto getDamageRange() -> RANGE;
         auto getType() -> DamageType;
         auto getTargetType() -> TargetType;

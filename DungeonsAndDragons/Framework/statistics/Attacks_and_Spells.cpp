@@ -4,8 +4,8 @@ auto Attack::getName() -> string {
     return name;
 }
 
-auto Attack::getAtkBonus() -> int {
-    return attack_bonus;
+auto Attack::getEnchantBonus() -> int {
+    return enchant_bonus;
 }
 
 auto Attack::getDamageRange() -> RANGE {
