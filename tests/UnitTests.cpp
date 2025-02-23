@@ -108,6 +108,54 @@ TEST_F(SkillTests, RecalcMod) {
     EXPECT_EQ(start_mod + 1, skill->getMod());
 }
 
+class EntityTests : public ::testing::Test {
+protected:
+    I_map<string> *descriptors;
+    I_map<int> *statistics;
+    vector<Attribute> *attributes;
+    Entity *entity;
+
+    virtual void SetUp() {
+        descriptors = new I_map<string>;
+        descriptors->set("name", "Test");
+        descriptors->set("description", "A test entity");
+
+        statistics = new I_map<int>;
+        statistics->set("max_hp", 20);
+        statistics->set("armor_class", 5);
+        statistics->set("initiative", 10);
+        statistics->set("speed", 10);
+
+        attributes = new vector<Attribute>;
+        Attribute str = Attribute("STR", 10);
+        Attribute dex = Attribute("DEX", 10);
+        attributes->push_back(str);
+        attributes->push_back(dex);
+
+        entity = new Entity(*descriptors, *statistics, *attributes);
+    }
+
+    virtual void TearDown() {
+        delete descriptors;
+        delete statistics;
+        delete entity;
+    }
+};
+
+TEST_F(EntityTests, Constructor) {
+    Entity temp_entity = Entity(*descriptors, *statistics, *attributes);
+
+    string name = descriptors->get("name");
+    int max_hp = 20;
+    int current_hp = 20;
+    int temp_hp = 0;
+
+    EXPECT_EQ(name, temp_entity.entity_description.get("name"));
+    EXPECT_EQ(max_hp, temp_entity.entity_statistics.get("max_hp"));
+    EXPECT_EQ(current_hp, temp_entity.entity_statistics.get("current_hp"));
+    EXPECT_EQ(temp_hp, temp_entity.entity_statistics.get("temp_hp"));
+}
+
 auto main(int argc, char **argv) -> int {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

@@ -22,16 +22,15 @@ class Entity {
     int max_hp;
     int current_hp;
     int temp_hp;
-    // AC, Initiative, Speed, Passive Wisdom
+    // AC, Initiative, Speed, Passive Wisdom, Proficiency Bonus, Hit Dice, Experience, Level
     int armor_class;
-    int initiative;
     int speed;
     int passive_wisdom;
-    // Proficiency Bonus, Hit Dice, Experience, Level
     int proficiency_bonus;
     int hit_dice;
     int experience;
     int level;
+    int challenge
     */
 
     // Entity Game Attributes
@@ -90,6 +89,15 @@ class Entity {
         // Constructors
 
         Entity() = default;
+
+        /**
+         * @brief Entity Constructor, standard stats are that of a commoner
+         * @link https://www.dndbeyond.com/monsters/16829-commoner
+         * @param descriptors a name and description
+         * @param statistics Entity statistics, like hitpoints, armor class, level, etc.
+         * @param attributes Entity Attributes with given values
+         * @authors BerlinVincent
+         */
         Entity(
             I_map<string> descriptors,
             I_map<int> statistics,

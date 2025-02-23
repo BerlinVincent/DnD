@@ -14,7 +14,7 @@ using namespace std;
  */
 template <typename T> class I_map {
 
-private:
+protected:
     unordered_map<string, T> map;
     
 public:
