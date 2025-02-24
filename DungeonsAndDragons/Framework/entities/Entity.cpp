@@ -74,9 +74,7 @@ void Entity::damage(int damage) {
     }
 }
 
-Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribute> attributes) {
-    entity_description = descriptors;
-    entity_statistics = statistics;
+Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribute> new_attributes) {
     this->attributes = attributes;
     
     // set descriptors, if not given
