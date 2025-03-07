@@ -145,7 +145,21 @@ protected:
 TEST_F(EntityTests, Constructor) {
     Entity temp_entity = Entity(*descriptors, *statistics, *attributes);
 
-    string name = descriptors->get("name");
+    string name = "Test";
+    int max_hp = 20;
+    int current_hp = 20;
+    int temp_hp = 0;
+
+    EXPECT_EQ(name, temp_entity.entity_description.get("name"));
+    EXPECT_EQ(max_hp, temp_entity.entity_statistics.get("max_hp"));
+    EXPECT_EQ(current_hp, temp_entity.entity_statistics.get("current_hp"));
+    EXPECT_EQ(temp_hp, temp_entity.entity_statistics.get("temp_hp"));
+}
+
+TEST_F(EntityTests, CoypConstructor) {
+    Entity temp_entity = Entity(*entity);
+
+    string name = "Test";
     int max_hp = 20;
     int current_hp = 20;
     int temp_hp = 0;
