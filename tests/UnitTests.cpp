@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
+#include <fstream>
 #include "../DungeonsAndDragons/Framework/game_engine/Game.hpp"
+#include "../DungeonsAndDragons/Framework/CharacterCreator/CreationEngine.hpp"
 
 class AttributeTests : public ::testing::Test {
 protected:
@@ -118,7 +120,7 @@ protected:
     virtual void SetUp() {
         descriptors = new I_map<string>;
         descriptors->set("name", "Test");
-        descriptors->set("description", "A test entity");
+        descriptors->set("descriptor", "A test entity");
 
         statistics = new I_map<int>;
         statistics->set("max_hp", 20);
@@ -127,10 +129,8 @@ protected:
         statistics->set("speed", 10);
 
         attributes = new vector<Attribute>;
-        Attribute str = Attribute("STR", 10);
-        Attribute dex = Attribute("DEX", 10);
-        attributes->push_back(str);
-        attributes->push_back(dex);
+        attributes->push_back(Attribute("STR", 10));
+        attributes->push_back(Attribute("DEX", 10));
 
         entity = new Entity(*descriptors, *statistics, *attributes);
     }
@@ -138,6 +138,7 @@ protected:
     virtual void TearDown() {
         delete descriptors;
         delete statistics;
+        delete attributes;
         delete entity;
     }
 };
@@ -146,29 +147,90 @@ TEST_F(EntityTests, Constructor) {
     Entity temp_entity = Entity(*descriptors, *statistics, *attributes);
 
     string name = "Test";
+    string descriptor = "A test entity";
     int max_hp = 20;
     int current_hp = 20;
     int temp_hp = 0;
 
     EXPECT_EQ(name, temp_entity.entity_description.get("name"));
+    EXPECT_EQ(descriptor, temp_entity.entity_description.get("descriptor"));
     EXPECT_EQ(max_hp, temp_entity.entity_statistics.get("max_hp"));
     EXPECT_EQ(current_hp, temp_entity.entity_statistics.get("current_hp"));
     EXPECT_EQ(temp_hp, temp_entity.entity_statistics.get("temp_hp"));
 }
 
-TEST_F(EntityTests, CoypConstructor) {
+TEST_F(EntityTests, CopyConstructor) {
     Entity temp_entity = Entity(*entity);
 
-    string name = "Test";
-    int max_hp = 20;
-    int current_hp = 20;
-    int temp_hp = 0;
-
-    EXPECT_EQ(name, temp_entity.entity_description.get("name"));
-    EXPECT_EQ(max_hp, temp_entity.entity_statistics.get("max_hp"));
-    EXPECT_EQ(current_hp, temp_entity.entity_statistics.get("current_hp"));
-    EXPECT_EQ(temp_hp, temp_entity.entity_statistics.get("temp_hp"));
+    EXPECT_EQ(entity->entity_description.get("name"), temp_entity.entity_description.get("name"));
+    EXPECT_EQ(entity->entity_description.get("descriptor"), temp_entity.entity_description.get("descriptor"));
+    EXPECT_EQ(entity->entity_statistics.get("max_hp"), temp_entity.entity_statistics.get("max_hp"));
+    EXPECT_EQ(entity->entity_statistics.get("current_hp"), temp_entity.entity_statistics.get("current_hp"));
+    EXPECT_EQ(entity->entity_statistics.get("temp_hp"), temp_entity.entity_statistics.get("temp_hp"));
 }
+
+/*
+class CharacterCreatorTests : public ::testing::Test {
+protected:
+    I_map<string> *descriptors;
+    I_map<int> *statistics;
+    vector<Attribute> *attributes;
+    Entity *entity;
+    CreationEngine *engine;
+
+    virtual void SetUp() {
+        descriptors = new I_map<string>;
+        descriptors->set("name", "Commoner");
+        descriptors->set("descriptor", "Medium Humanoid");
+
+        statistics = new I_map<int>;
+        statistics->set("max_hp", 4);
+        statistics->set("armor_class", 10);
+        statistics->set("speed", 30);
+        statistics->set("challenge", 0);
+
+        attributes = new vector<Attribute>;
+        attributes->push_back(Attribute("STR", 10));
+        attributes->push_back(Attribute("DEX", 10));
+        attributes->push_back(Attribute("CON", 10));
+        attributes->push_back(Attribute("INT", 10));
+        attributes->push_back(Attribute("WIS", 10));
+        attributes->push_back(Attribute("CHA", 10));
+
+        entity = new Entity(*descriptors, *statistics, *attributes);
+        engine = new CreationEngine;
+    }
+
+    virtual void TearDown() {
+        delete descriptors;
+        delete statistics;
+        delete attributes;
+        delete entity;
+        delete engine;
+    }
+};
+
+TEST_F(CharacterCreatorTests, CreateEntityFunction) {
+    ifstream file("../DungeonsAndDragons/Database/Commoner.txt");
+    Entity temp_entity = *engine->createEntity(file);
+
+    EXPECT_EQ(entity->entity_description.get("name"), temp_entity.entity_description.get("name"));
+    EXPECT_EQ(entity->entity_description.get("descriptor"), temp_entity.entity_description.get("descriptor"));
+
+    EXPECT_EQ(entity->entity_statistics.get("max_hp"), temp_entity.entity_statistics.get("max_hp"));
+    EXPECT_EQ(entity->entity_statistics.get("current_hp"), temp_entity.entity_statistics.get("current_hp"));
+    EXPECT_EQ(entity->entity_statistics.get("temp_hp"), temp_entity.entity_statistics.get("temp_hp"));
+    EXPECT_EQ(entity->entity_statistics.get("challenge"), temp_entity.entity_statistics.get("challenge"));
+
+    for(size_t i = 0; i < 6; i++) {
+        Attribute val1 = entity->listAttributes()[i];
+        Attribute val2 = temp_entity.listAttributes()[i];
+        EXPECT_EQ(val1.getName(), val2.getName());
+        EXPECT_EQ(val1.getMod(), val2.getMod());
+        EXPECT_EQ(val1.getScore(), val2.getScore());
+    }
+}
+*/
 
 auto main(int argc, char **argv) -> int {
     testing::InitGoogleTest(&argc, argv);

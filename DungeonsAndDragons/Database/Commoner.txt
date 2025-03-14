@@ -1,0 +1,14 @@
+[name]          : [Commoner]
+[descriptor]    : [Medium Humanoid]
+
+[max_hp]        : [4]
+[armor_class]   : [10]
+[speed]         : [30]
+[challenge]     : [0]
+
+[STR]           : [10]
+[DEX]           : [10]
+[CON]           : [10]
+[INT]           : [10]
+[WIS]           : [10]
+[CHA]           : [10]

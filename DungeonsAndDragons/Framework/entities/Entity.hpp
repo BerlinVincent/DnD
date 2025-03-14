@@ -22,7 +22,7 @@ class Entity {
     int max_hp;
     int current_hp;
     int temp_hp;
-    // AC, Initiative, Speed, Passive Wisdom, Proficiency Bonus, Hit Dice, Experience, Level
+    // AC, Speed, Passive Wisdom, Proficiency Bonus, Hit Dice, Experience, Level
     int armor_class;
     int speed;
     int passive_wisdom;
