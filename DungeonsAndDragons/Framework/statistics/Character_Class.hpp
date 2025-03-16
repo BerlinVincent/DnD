@@ -11,6 +11,7 @@ enum Character_Classes {
     Sorcerer,   Warlock,    Wizard
 };
 
+/*
 vector<string> char_class_names = {
     "Barbarian","Bard",     "Cleric",
     "Druid",    "Fighter",  "Monk",
@@ -25,13 +26,13 @@ vector<string> primary_abilities = {
     "CHA",          "CHA",          "INT"
 };
 
-/* Example code, kinda how it's supposed to work in the end
+Example code, kinda how it's supposed to work in the end
 vector<Dice> hp_die = {
     "D12",  "D8",   "D8",
     "D8",   "D10",  "D8",
     "D10",  "D10",  "D8",
     "D6",   "D8",   "D6"
-}; */
+};
 
 vector<vector<Skills>> st_proficiencies = {
     {STR_st, CON_st}, {DEX_st, CHA_st}, {WIS_st, CHA_st},
@@ -39,6 +40,7 @@ vector<vector<Skills>> st_proficiencies = {
     {WIS_st, CHA_st}, {DEX_st, WIS_st}, {DEX_st, INT_st},
     {CON_st, CHA_st}, {WIS_st, CHA_st}, {INT_st, WIS_st}
 };
+*/
 
 struct Character_Class {
     string name;

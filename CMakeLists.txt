@@ -29,6 +29,8 @@ set(Headers
     DungeonsAndDragons/Framework/statistics/Character_Class.hpp
     DungeonsAndDragons/Framework/statistics/Skill.hpp
 
+    DungeonsAndDragons/Framework/CharacterCreator/CreationEngine.hpp
+
     DungeonsAndDragons/Framework/inclusions.hpp
 )
 
@@ -42,6 +44,8 @@ set(Sources
     DungeonsAndDragons/Framework/statistics/Attacks_and_Spells.cpp
     DungeonsAndDragons/Framework/statistics/Attribute.cpp
     DungeonsAndDragons/Framework/statistics/Skill.cpp
+
+    DungeonsAndDragons/Framework/CharacterCreator/CreationEngine.cpp
 
     DungeonsAndDragons/Framework/inclusions.hpp
 )

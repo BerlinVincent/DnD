@@ -91,7 +91,7 @@ void Entity::damage(int damage) {
 }
 
 Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribute> new_attributes) {
-    this->attributes = attributes;
+    this->attributes = new_attributes;
     
     // set descriptors, if not given
     entity_description.set("name", descriptors.getMap().count("name") ? descriptors.get("name") : "Commoner");

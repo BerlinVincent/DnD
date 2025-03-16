@@ -169,7 +169,6 @@ TEST_F(EntityTests, CopyConstructor) {
     EXPECT_EQ(entity->entity_statistics.get("temp_hp"), temp_entity.entity_statistics.get("temp_hp"));
 }
 
-/*
 class CharacterCreatorTests : public ::testing::Test {
 protected:
     I_map<string> *descriptors;
@@ -211,7 +210,16 @@ protected:
 };
 
 TEST_F(CharacterCreatorTests, CreateEntityFunction) {
-    ifstream file("../DungeonsAndDragons/Database/Commoner.txt");
+    filesystem::path walking_path = filesystem::current_path();
+    filesystem::path target_path = "";
+    
+    while (walking_path.has_parent_path() && walking_path.filename() != "DnD") {
+        walking_path = walking_path.parent_path();
+        target_path /= "..";
+    }
+    target_path /= "DungeonsAndDragons/Database/Commoner.txt";
+
+    ifstream file(target_path);
     Entity temp_entity = *engine->createEntity(file);
 
     EXPECT_EQ(entity->entity_description.get("name"), temp_entity.entity_description.get("name"));
@@ -230,7 +238,6 @@ TEST_F(CharacterCreatorTests, CreateEntityFunction) {
         EXPECT_EQ(val1.getScore(), val2.getScore());
     }
 }
-*/
 
 auto main(int argc, char **argv) -> int {
     testing::InitGoogleTest(&argc, argv);

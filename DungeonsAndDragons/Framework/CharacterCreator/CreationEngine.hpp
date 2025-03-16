@@ -3,7 +3,7 @@
 
 #include <filesystem>
 #include "../inclusions.hpp"
-#include "../entities/Player.cpp"
+#include "../entities/Player.hpp"
 
 class CreationEngine {
     public:
