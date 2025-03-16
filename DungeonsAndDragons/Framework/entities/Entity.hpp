@@ -22,7 +22,7 @@ class Entity {
     int max_hp;
     int current_hp;
     int temp_hp;
-    // AC, Initiative, Speed, Passive Wisdom, Proficiency Bonus, Hit Dice, Experience, Level
+    // AC, Speed, Passive Wisdom, Proficiency Bonus, Hit Dice, Experience, Level
     int armor_class;
     int speed;
     int passive_wisdom;
@@ -68,6 +68,10 @@ class Entity {
         auto listAttributes() -> vector<Attribute>;
         auto getAttack(size_t i) -> Attack;
         auto listAttacksAndSpells() -> vector<Attack>;
+        auto getSavingThrow(size_t i) -> Skill;
+        auto listSavingThrows() -> vector<Skill>;
+        auto getTraitOrFeat(size_t i) -> int;
+        auto listTraitsAndFeats() -> vector<int>;
 
         // Set functions
 
@@ -103,6 +107,13 @@ class Entity {
             I_map<int> statistics,
             vector<Attribute> attributes
         );
+
+        /**
+         * @brief Entity Copy Constructor
+         * @param original the Entity to be copied from
+         * @authors BerlinVincent
+         */
+        Entity(Entity &original);
 };
 
 #endif // ENTITY_H_

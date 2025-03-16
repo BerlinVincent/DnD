@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include "Framework/game_engine/Game.hpp"
 #include "Framework/CharacterCreator/CreationEngine.hpp"
 

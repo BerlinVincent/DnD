@@ -39,6 +39,22 @@ auto Entity::listAttacksAndSpells() -> vector<Attack> {
     return Attacks_and_Spells;
 }
 
+auto Entity::getSavingThrow(size_t i) -> Skill {
+    return saving_throws[i];
+}
+
+auto Entity::listSavingThrows() -> vector<Skill> {
+    return saving_throws;
+}
+
+auto Entity::getTraitOrFeat(size_t i) -> int {
+    return Traits_and_Feats[i];
+}
+
+auto Entity::listTraitsAndFeats() -> vector<int> {
+    return Traits_and_Feats;
+}
+
 // Set functions
 
 void Entity::addAttack(Attack attack) {
@@ -97,4 +113,13 @@ Entity::Entity(I_map<string> descriptors, I_map<int> statistics, vector<Attribut
     entity_statistics.set("experience", statistics.getMap().count("experience") ? statistics.get("experience") : 0);
     entity_statistics.set("level", statistics.getMap().count("level") ? statistics.get("level") : 1);
     entity_statistics.set("challenge", statistics.getMap().count("challenge") ? statistics.get("challenge") : 0);
+}
+
+Entity::Entity(Entity &original) {
+    entity_description = original.entity_description;
+    entity_statistics = original.entity_statistics;
+    attributes = original.listAttributes();
+    Attacks_and_Spells = original.listAttacksAndSpells();
+    saving_throws = original.listSavingThrows();
+    Traits_and_Feats = original.listTraitsAndFeats();
 }
