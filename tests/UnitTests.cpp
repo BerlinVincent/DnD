@@ -217,7 +217,7 @@ TEST_F(CharacterCreatorTests, CreateEntityFunction) {
         walking_path = walking_path.parent_path();
         target_path /= "..";
     }
-    target_path /= "DungeonsAndDragons/Database/Commoner.txt";
+    target_path /= "DungeonsAndDragons/Database/EntityFiles/Commoner.txt";
 
     ifstream file(target_path);
     Entity temp_entity = *engine->createEntity(file);

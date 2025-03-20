@@ -55,3 +55,39 @@ auto CreationEngine::createEntity(ifstream &file) -> Entity * {
 
     return entity;
 }
+
+void CreationEngine::createPlayerFile() {
+    filesystem::path walking_path = filesystem::current_path();
+    filesystem::path target_path = "";
+    
+    while (walking_path.has_parent_path() && walking_path.filename() != "DnD") {
+        walking_path = walking_path.parent_path();
+        target_path /= "..";
+    }
+    target_path /= "DungeonsAndDragons/Database/Player.txt";
+
+    ofstream file(target_path, ios::trunc);
+    string line;
+    vector<string> inputs = {
+        "name",
+        "descriptor",
+        "max_hp",
+        "armor_class",
+        "speed",
+        "challenge",
+        "STR",
+        "DEX",
+        "CON",
+        "INT",
+        "WIS",
+        "CHA"
+    };
+
+    for (size_t i = 0; i < inputs.size(); i++) {
+        cout << "Enter " << inputs[i] << ": ";
+        getline(cin, line);
+
+        if (i == 2 || i == 6) file << endl;
+        file << "[" << inputs[i] << "] : [" << line << "]" << endl; 
+    }
+}

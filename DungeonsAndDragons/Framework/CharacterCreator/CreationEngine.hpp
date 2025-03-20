@@ -11,14 +11,22 @@ class CreationEngine {
          * @brief A function to create an Entity based on data in a file
          * @param file The file containing the Entity data
          * @returns The created Entity
+         * @author BerlinVincent
          */
         auto createEntity(ifstream &file) -> Entity *;
 
         /**
          * @brief A function to create an Entity in a menu
-         * @returns The created Entity
+         * @author BerlinVincent
          */
-        auto createCustomEntity() -> Entity *;
+        void createCustomEntity();
+
+        /**
+         * @brief A function to create a Player File in a menu
+         * @author BerlinVincent
+         */
+        void createPlayerFile();
+
 };
 
 #endif // CREATION_ENGINE_H_
