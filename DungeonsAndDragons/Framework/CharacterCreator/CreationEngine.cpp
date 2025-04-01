@@ -84,7 +84,7 @@ void CreationEngine::createPlayerFile() {
     };
 
     for (size_t i = 0; i < inputs.size(); i++) {
-        cout << "Enter " << inputs[i] << ": ";
+        cout << "Enter " << inputs[i] << ": " << endl;
         getline(cin, line);
 
         if (i == 2 || i == 6) file << endl;

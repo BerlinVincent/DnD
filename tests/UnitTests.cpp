@@ -239,6 +239,53 @@ TEST_F(CharacterCreatorTests, CreateEntityFunction) {
     }
 }
 
+TEST_F(CharacterCreatorTests, CreatePlayerFileFunction) {
+    // navigate to Player.txt
+    filesystem::path walking_path = filesystem::current_path();
+    filesystem::path target_path = "";
+
+    while (walking_path.has_parent_path() && walking_path.filename() != "DnD") {
+        walking_path = walking_path.parent_path();
+        target_path /= "..";
+    }
+    target_path /= "DungeonsAndDragons/Database/Player.txt";
+
+    // inputs for comparison
+    string name = "Player1";
+    string descriptor = "a player entity";
+    string max_hp = "8";
+    string armor_class = "10";
+    string speed = "30";
+    string STR = "10";
+    string DEX = "10";
+    string CON = "10";
+    string INT = "10";
+    string WIS = "10";
+    string CHA = "10";
+    string input =
+        name + "\n" + descriptor + "\n" + max_hp + "\n" +
+        armor_class + "\n" + speed + "\n" +
+        STR + "\n" + DEX + "\n" + CON + "\n" +
+        INT + "\n" + WIS + "\n" + CHA + "\n";
+
+    // create a simulation stream
+    istringstream inputStream(input);
+    ostringstream outputStream;
+
+    // backup cin and cout and redirect to simulation stream
+    streambuf* cinBackup = cin.rdbuf();
+    streambuf* coutBackup = cout.rdbuf();
+    cin.rdbuf(inputStream.rdbuf());
+    cout.rdbuf(outputStream.rdbuf());
+
+    // call function to be tested
+    engine->createPlayerFile();
+    
+    // reset cin and cout
+    cin.rdbuf(cinBackup);
+    cout.rdbuf(coutBackup);
+}
+
 auto main(int argc, char **argv) -> int {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
