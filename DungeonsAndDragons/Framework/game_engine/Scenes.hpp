@@ -3,6 +3,17 @@
 
 #include <variant>
 namespace scenes {
+    struct Combat {
+        // Pokémon-inspired Combat Screen
+    };
+
+    struct Explore {
+        // 2D Room Map
+    };
+
+    struct Sheet {
+        // Character Sheet, Inventory, Menus in general
+    };
 
     /**
      * @brief A class for the different Game Scenes
@@ -10,23 +21,12 @@ namespace scenes {
      *          COMBAT    - Game is in Combat State
      *          EXPLORE   - Player is exploring Dungeon Room
      *          INVENTORY - Inventory View
-     * @authors PeterfoxUwU
+     * @authors PeterfoxUwU, BerlinVincent
      */
     class Scene {
-        struct Combat {
-            // enemy Grid
-            // background img
-        };
+    public:
 
-        struct Explore {
-            // 2D Room Map
-        };
-
-        struct Inventory {
-            // items
-        };
-
-        std::variant<Combat, Explore, Inventory> scene;
+        std::variant<Combat, Explore, Sheet> currentScene;
     };
 }  // namespace scenes
 

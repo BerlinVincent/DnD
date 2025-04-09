@@ -7,7 +7,7 @@
 namespace render {
 
     class Renderer {
-        virtual auto render(const Entity &player,const scenes::Scene &) -> bool {return true;}
+        virtual auto render(const Player &player,const scenes::Scene &) -> bool {return true;}
     };
 }  // namespace render
 
