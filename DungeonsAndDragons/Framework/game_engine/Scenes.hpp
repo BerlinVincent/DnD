@@ -2,6 +2,7 @@
 #define SCENES_H_
 
 #include "../entities/Player.hpp"
+#include "Action.hpp"
 #include <variant>
 #include <vector>
 #include <utility>
@@ -13,11 +14,15 @@ namespace scenes {
      */
     struct Combat {
     public:
+        Combat(Player& player, Entity& enemy);
+
         void playerAttack();
         void enemyAttack();
     private:
+        Action act;
         Player& player;
         Entity& enemy;
+        int turn;
     };
 
     /**
