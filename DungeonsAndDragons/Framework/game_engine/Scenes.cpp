@@ -52,16 +52,20 @@ void Explore::placeEntity(int x, int y) {
 void Explore::move(int key) {
     switch(key) {
         case KEY_UP:
-            if (!inBounds(player_pos.first + 1, player_pos.second) || room_map[player_pos.first + 1][player_pos.second] == 'X');
+            if (!inBounds(player_pos.first + 1, player_pos.second) ||
+                room_map[player_pos.first + 1][player_pos.second] == 'X');
             else player_pos.first++;
         case KEY_DOWN:
-            if (!inBounds(player_pos.first - 1, player_pos.second) || room_map[player_pos.first - 1][player_pos.second] == 'X');
+            if (!inBounds(player_pos.first - 1, player_pos.second) ||
+                room_map[player_pos.first - 1][player_pos.second] == 'X');
             else player_pos.first--;
         case KEY_LEFT:
-            if (!inBounds(player_pos.first, player_pos.second - 1) || room_map[player_pos.first][player_pos.second - 1] == 'X');
+            if (!inBounds(player_pos.first, player_pos.second - 1) ||
+                room_map[player_pos.first][player_pos.second - 1] == 'X');
             else player_pos.second--;
         case KEY_RIGHT:
-            if (inBounds(player_pos.first, player_pos.second + 1) || room_map[player_pos.first][player_pos.second + 1] == 'X');
+            if (inBounds(player_pos.first, player_pos.second + 1) ||
+                room_map[player_pos.first][player_pos.second + 1] == 'X');
             else player_pos.second++;
     }
 }

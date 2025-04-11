@@ -4,13 +4,16 @@
 #include "Renderer.hpp"
 namespace game {
     class Game {
-        render::Renderer &renderer;
+        render::Renderer& renderer;
+        scenes::Scene& scene;
 
     public:
-        Game(render::Renderer &renderer)
-            : renderer(renderer) {
-                
+        Game(render::Renderer& renderer, scenes::Scene& scene) :
+        renderer(renderer), scene(scene) {
+            
         }
+
+        
     };
 }  // namespace game
 

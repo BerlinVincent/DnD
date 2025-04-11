@@ -54,8 +54,10 @@ auto test() -> int {
 */
 
 auto main(int argc, char *argv[]) -> int {
+
     render::Renderer renderer;
-    game::Game handler(renderer);
+    scenes::Scene scene = Scene();
+    game::Game handler(renderer, scene);
     
     //if(test() != 0) cerr << "Error while testing" << endl;
 
