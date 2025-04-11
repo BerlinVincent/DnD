@@ -37,6 +37,8 @@ namespace scenes {
         void placeGround(int x, int y);
         void placePlayer(int x, int y);
         void placeEntity(int x, int y);
+
+        void move(int key);
     private:
         std::vector<std::vector<char>> room_map;
         std::pair<int, int> player_pos;
