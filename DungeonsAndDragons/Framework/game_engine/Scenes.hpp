@@ -3,6 +3,8 @@
 
 #include "../entities/Player.hpp"
 #include "Action.hpp"
+#include <fstream>
+#include <regex>
 #include <variant>
 #include <vector>
 #include <utility>
@@ -20,8 +22,8 @@ namespace scenes {
         void enemyAttack();
     private:
         Action act;
-        Player& player;
-        Entity& enemy;
+        Player &player;
+        Entity &enemy;
         int turn;
     };
 
@@ -33,21 +35,27 @@ namespace scenes {
     public:
         Explore(int width, int height);
 
-        void placeWall(int x, int y);
-        void placeGround(int x, int y);
-        void placePlayer(int x, int y);
-        void placeEntity(int x, int y);
-
+        void placeObj(int x, int y, char Obj);
         void move(int key);
     private:
-        std::vector<std::vector<char>> room_map;
-        std::pair<int, int> player_pos;
+        vector<std::vector<char>> room_map;
+        pair<int, int> player_pos;
 
         auto inBounds(int x, int y) -> bool;
     };
 
+    struct MenuOption {
+        string label;
+        string command;
+    };
+
     struct Sheet {
-        // Character Sheet, Inventory, Menus in general
+    public:
+        Sheet(ifstream &file);
+
+        void runMenu();
+    private:
+        std::vector<MenuOption> options;
     };
 
     /**
@@ -60,13 +68,13 @@ namespace scenes {
      */
     class Scene {
     public:
-        std::variant<Combat, Explore, Sheet> currentScene;
+        variant<Combat, Explore, Sheet> currentScene;
 
-        Scene(const Combat& combat) : currentScene(combat) {}
-        Scene(const Explore& explore) : currentScene(explore) {}
-        Scene(const Sheet& sheet) : currentScene(sheet) {}
+        Scene(const Combat &combat) : currentScene(combat) {}
+        Scene(const Explore &explore) : currentScene(explore) {}
+        Scene(const Sheet &sheet) : currentScene(sheet) {}
 
-        const std::variant<Combat, Explore, Sheet>& getVariant() const {
+        const variant<Combat, Explore, Sheet>& getVariant() const {
             return currentScene;
         }
     };
