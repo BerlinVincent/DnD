@@ -16,7 +16,13 @@ namespace scenes {
      */
     struct Combat {
     public:
-        Combat(Player& player, Entity& enemy);
+        Combat() = default;
+        Combat(Player& player, Entity& enemy) :
+            player(player),
+            enemy(enemy),
+            act() {
+            turn = 0;
+        }
 
         void playerAttack();
         void enemyAttack();
@@ -33,6 +39,7 @@ namespace scenes {
      */
     struct Explore {
     public:
+        Explore() = default;
         Explore(int width, int height);
 
         void placeObj(int x, int y, char Obj);
@@ -51,6 +58,7 @@ namespace scenes {
 
     struct Sheet {
     public:
+        Sheet() = default;
         Sheet(ifstream &file);
 
         void runMenu();
@@ -70,6 +78,7 @@ namespace scenes {
     public:
         variant<Combat, Explore, Sheet> currentScene;
 
+        Scene() = default;
         Scene(const Combat &combat) : currentScene(combat) {}
         Scene(const Explore &explore) : currentScene(explore) {}
         Scene(const Sheet &sheet) : currentScene(sheet) {}
