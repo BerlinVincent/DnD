@@ -1,0 +1,10 @@
+MenuName: Main Menu
+---
+Option: Start Game
+Command: start_game
+---
+Option: 
+Command: 
+---
+Option: Quit
+Command: quit_game

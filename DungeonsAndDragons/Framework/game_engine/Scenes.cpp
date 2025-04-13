@@ -1,5 +1,4 @@
 #include "Scenes.hpp"
-#include <ncurses.h>
 
 using namespace scenes;
 
@@ -57,18 +56,60 @@ void Explore::move(int key) {
 
 Sheet::Sheet(ifstream &file) {
     string line, label, effect;
+
+    regex pattern_menu_name(R"(^\s*MenuName\s*:\s*(.+)\s*$)");
     regex pattern_option(R"(^\s*Option\s*:\s*(.+)\s*$)");
     regex pattern_effect(R"(^\s*Command\s*:\s*(.+)\s*$)");
     regex pattern_sep("^-+$");
     smatch match;
 
     while (getline(file, line)) {
-        if (regex_match(line, match, pattern_option)) {
+        if (regex_match(line, match, pattern_menu_name)) {
+            this->menuName = match[1];
+        } else if (regex_match(line, match, pattern_option)) {
             label = match[1];
         } else if (regex_match(line, match, pattern_effect)) {
             effect = match[1];
         } else if (regex_match(line, match, pattern_sep)) {
             options.push_back({label, effect});
         }
+    }
+}
+
+void Sheet::runMenu() {
+
+    size_t highlight = 0;
+    int input;
+
+    while (true) {
+        clear();
+        mvprintw(0, 0, this->menuName.c_str());
+
+        for (size_t i = 0; i < this->options.size(); i++) {
+            if (i == highlight) attron(A_REVERSE);
+            mvprintw(i + 2, 2, "%s", this->options[i].label.c_str());
+            if (i == highlight) attroff(A_REVERSE);
+        }
+
+        input = getch();
+
+        switch (input) {
+            case KEY_UP:
+                highlight = (highlight - 1 + this->options.size()) % this->options.size();
+                break;
+            case KEY_DOWN:
+                highlight = (highlight + 1) % this->options.size();
+                break;
+            case 10:
+                if (command_map.find(this->options[highlight].command) != command_map.end()) {
+                    command_map[this->options[highlight].command]();
+                } else {
+                    clear();
+                    mvprintw(0, 0, "This function has not been implemented.");
+                    napms(2000);
+                }
+                break;
+        }
+        endwin();
     }
 }

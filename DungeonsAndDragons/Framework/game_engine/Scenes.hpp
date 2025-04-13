@@ -3,11 +3,13 @@
 
 #include "../entities/Player.hpp"
 #include "Action.hpp"
+#include "Command_Palette.hpp"
 #include <fstream>
 #include <regex>
 #include <variant>
 #include <vector>
 #include <utility>
+#include <ncurses.h>
 
 namespace scenes {
     /**
@@ -16,7 +18,6 @@ namespace scenes {
      */
     struct Combat {
     public:
-        Combat() = default;
         Combat(Player& player, Entity& enemy) :
             player(player),
             enemy(enemy),
@@ -39,7 +40,6 @@ namespace scenes {
      */
     struct Explore {
     public:
-        Explore() = default;
         Explore(int width, int height);
 
         void placeObj(int x, int y, char Obj);
@@ -58,11 +58,11 @@ namespace scenes {
 
     struct Sheet {
     public:
-        Sheet() = default;
         Sheet(ifstream &file);
 
         void runMenu();
     private:
+        string menuName;
         std::vector<MenuOption> options;
     };
 
@@ -78,7 +78,6 @@ namespace scenes {
     public:
         variant<Combat, Explore, Sheet> currentScene;
 
-        Scene() = default;
         Scene(const Combat &combat) : currentScene(combat) {}
         Scene(const Explore &explore) : currentScene(explore) {}
         Scene(const Sheet &sheet) : currentScene(sheet) {}
