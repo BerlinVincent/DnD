@@ -18,6 +18,10 @@ namespace scenes {
      */
     struct Combat {
     public:
+
+        /**
+         * @brief Constructor for Combat Scenes
+         */
         Combat(Player& player, Entity& enemy) :
             player(player),
             enemy(enemy),
@@ -25,9 +29,17 @@ namespace scenes {
             turn = 0;
         }
 
+        /**
+         * @brief Function for Attacks by the Player
+         */
         void playerAttack();
+
+        /**
+         * @brief Function for Attacks by non-Players
+         */
         void enemyAttack();
-    private:
+
+    private:    
         Action act;
         Player &player;
         Entity &enemy;
@@ -40,14 +52,28 @@ namespace scenes {
      */
     struct Explore {
     public:
+        
+        /**
+         * @brief Constructor for Room Explore Scenes
+         */
         Explore(int width, int height);
 
+        /**
+         * @brief Function for placing objects in the room
+         */
         void placeObj(int x, int y, char Obj);
+        /**
+         * @brief Function for moving the Player in the room
+         */
         void move(int key);
+    
     private:
         vector<std::vector<char>> room_map;
         pair<int, int> player_pos;
 
+        /**
+         * @brief Simple function for coordinate bounds checks
+         */
         auto inBounds(int x, int y) -> bool;
     };
 
@@ -58,9 +84,18 @@ namespace scenes {
 
     struct Sheet {
     public:
+
+        /**
+         * @brief Constructor for Sheet Scenes, e.g. Menus, Character Sheets, Inventories, etc.
+         */
         Sheet(ifstream &file);
 
+        /**
+         * This belongs into the renderer, I think
+         * @brief Function for displaying of Sheets
+         */
         void runMenu();
+        
     private:
         string menuName;
         std::vector<MenuOption> options;
