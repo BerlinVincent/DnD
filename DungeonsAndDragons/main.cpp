@@ -55,8 +55,10 @@ auto test() -> int {
 
 auto main(int argc, char *argv[]) -> int {
 
+    ifstream FileMainMenu("./Database/SheetFiles/MainMenu.txt", ios::in);
+    scenes::Sheet SheetMainMenu(FileMainMenu);
+    scenes::Scene scene(SheetMainMenu);
     render::Renderer renderer;
-    scenes::Scene scene;
     game::Game handler(renderer, scene);
     
     //if(test() != 0) cerr << "Error while testing" << endl;

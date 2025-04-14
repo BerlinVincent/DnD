@@ -14,8 +14,6 @@ namespace game {
         renderer(renderer) {
             scenes.push(scene);
         }
-
-        
     };
 }  // namespace game
 

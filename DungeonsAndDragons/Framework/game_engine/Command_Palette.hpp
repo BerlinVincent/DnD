@@ -2,6 +2,7 @@
 #define COMMANDS_H_
 
 #include "Scenes.hpp"
+#include <functional>
 
 using basicCommand = std::function<void()>;
 
