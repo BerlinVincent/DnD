@@ -2,12 +2,12 @@
 
 using namespace scenes;
 
-Combat::Combat(Player& player, Entity& enemy) :
+/*Combat::Combat(Player& player, Entity& enemy) :
     player(player),
     enemy(enemy),
     act() {
     turn = 0;
-}
+}*/
 
 void Combat::playerAttack() {
     act.attack(player, enemy);

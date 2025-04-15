@@ -2,7 +2,7 @@
 #define ACTION_H_
 
 #include "../inclusions.hpp"
-#include "../entities/Entity.cpp"
+#include "../entities/Entity.hpp"
 
 class Action {
 public:
@@ -16,12 +16,12 @@ public:
   * @returns boolean whether the function executed correctly
   * @author BerlinVincent
   */
-  auto attack(Entity &attacker, Entity &target) -> bool;
-  auto spellcast(Entity target) -> auto;
+  auto attack(entity::Entity &attacker, entity::Entity &target) -> bool;
+  auto spellcast(entity::Entity target) -> auto;
   auto dash() -> bool;
   auto disengage() -> bool;
   auto dodge() -> bool;
-  auto help(Entity target) -> bool;
+  auto help(entity::Entity target) -> bool;
   auto hide() -> bool;
   auto ready() -> bool;
   auto search() -> bool;

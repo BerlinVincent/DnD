@@ -1,5 +1,7 @@
 #include "Entity.hpp"
 
+using namespace entity;
+
 // Get functions
 /* old get functions
 string Entity::getName() {

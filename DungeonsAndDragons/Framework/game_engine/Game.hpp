@@ -4,10 +4,12 @@
 #include "Renderer.hpp"
 #include <stack>
 
+
+
 namespace game {
     class Game {
-        render::Renderer &renderer;
-        stack<scenes::Scene&> scenes;
+        render::Renderer renderer;
+        stack<scenes::Scene> scenes;
 
     public:
         Game(render::Renderer &renderer, scenes::Scene &scene) :

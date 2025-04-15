@@ -12,8 +12,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 include(CTest)
 enable_testing()
 
-add_subdirectory(DungeonsAndDragons)
-
 set(Headers
     DungeonsAndDragons/Framework/entities/Entity.hpp
     DungeonsAndDragons/Framework/entities/Player.hpp
@@ -40,6 +38,7 @@ set(Sources
 
     DungeonsAndDragons/Framework/game_engine/Action.cpp
     DungeonsAndDragons/Framework/game_engine/Game.cpp
+    DungeonsAndDragons/Framework/game_engine/Scenes.cpp
 
     DungeonsAndDragons/Framework/statistics/Attacks_and_Spells.cpp
     DungeonsAndDragons/Framework/statistics/Attribute.cpp
@@ -53,3 +52,5 @@ set(Sources
 add_library(${This} STATIC ${Sources} ${Headers})
 
 add_subdirectory(tests)
+
+add_subdirectory(DungeonsAndDragons)

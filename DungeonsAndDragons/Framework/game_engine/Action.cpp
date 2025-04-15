@@ -1,6 +1,6 @@
 #include "Action.hpp"
 
-auto Action::attack(Entity &attacker, Entity &target) -> bool{    
+auto Action::attack(entity::Entity &attacker, entity::Entity &target) -> bool{    
     // roll a d20 to hit
     if (rand() % 20 < target.entity_statistics.get("armor_class")) {
         cout << "Attack did not hit!" << endl;
