@@ -6,7 +6,7 @@
 
 using basicCommand = std::function<void()>;
 
-unordered_map<string, basicCommand> command_map = {
+static inline unordered_map<string, basicCommand> command_map = {
     {
         "start_game", []() {
             

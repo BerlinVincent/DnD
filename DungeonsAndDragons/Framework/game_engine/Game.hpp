@@ -7,7 +7,7 @@
 namespace game {
     class Game {
         render::Renderer &renderer;
-        stack<scenes::Scene&> scenes;
+        stack<scenes::Scene> scenes;
 
     public:
         Game(render::Renderer &renderer, scenes::Scene &scene) :
