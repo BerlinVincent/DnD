@@ -2,7 +2,7 @@
 #define ACTION_H_
 
 #include "../inclusions.hpp"
-#include "../entities/Entity.cpp"
+#include "../entities/Entity.hpp"
 
 class Action {
 public:
