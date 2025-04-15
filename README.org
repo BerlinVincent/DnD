@@ -97,21 +97,17 @@ package "UI" #Lightblue {
 }
 package "Logic" #Coral {
         [game.logic] ##Std##
+}
+package "Serialize" #grey {
         [load.pack] ##Std##
         [save.pack] ##Std##
 }
-package "Events" #grey {
-        [inputs.eve] ##Std##
-        [notifications.eve] ##Std##
-}
 
-UI -> [inputs.eve]
-[game.logic] --> [notifications.eve]
-UI <-- [notifications.eve]
-[game.logic] <- [inputs.eve]
-[game.State] --> UI
-[game.logic] --> [save.pack]
-[game.logic] --> [load.pack]
+[game.State] <-- UI
+[game.logic] --> [Serialize]
+
+[menu.view] --> [load.pack]
+[menu.view] --> [store.pack]
 
 [save.pack] -> [game.State]
 [load.pack]  -> [game.State]

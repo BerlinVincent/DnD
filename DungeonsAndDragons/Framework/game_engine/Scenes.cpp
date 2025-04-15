@@ -1,13 +1,14 @@
 #include "Scenes.hpp"
+#include "Command_Palette.hpp"
 
 using namespace scenes;
 
-/*Combat::Combat(Player& player, Entity& enemy) :
-    player(player),
-    enemy(enemy),
-    act() {
-    turn = 0;
-}*/
+// Combat::Combat(Player& player, Entity& enemy) :
+//     player(player),
+//     enemy(enemy),
+//     act() {
+//     turn = 0;
+// }
 
 void Combat::playerAttack() {
     act.attack(player, enemy);
