@@ -4,8 +4,6 @@
 #include "Renderer.hpp"
 #include <stack>
 
-
-
 namespace game {
     class Game {
         render::Renderer &renderer;

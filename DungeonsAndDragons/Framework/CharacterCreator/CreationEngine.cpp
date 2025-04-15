@@ -2,7 +2,7 @@
 #include <fstream>
 #include <regex>
 
-auto CreationEngine::createEntity(ifstream &file) -> entity::Entity * {
+auto CreationEngine::createEntity(ifstream &file) -> Entity * {
     if (!file) throw runtime_error("invalid file pointer");
     if (!file.is_open()) throw runtime_error("error opening file");
     
@@ -51,7 +51,7 @@ auto CreationEngine::createEntity(ifstream &file) -> entity::Entity * {
         }
     }
     
-    entity::Entity *entity = new entity::Entity::Entity(description_I_map, statistics_I_map, attributes);
+    Entity *entity = new Entity(description_I_map, statistics_I_map, attributes);
 
     return entity;
 }

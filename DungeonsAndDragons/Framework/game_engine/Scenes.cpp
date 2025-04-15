@@ -31,7 +31,7 @@ auto Explore::inBounds(int x, int y) -> bool {
 
 void Explore::placeObj(int x, int y, char Obj) {
     if (inBounds(x, y)) room_map[x][y] = Obj;
-    else cerr << "Out of bounds coordinates for " + Obj << endl;
+    else cerr << "Out of bounds coordinates for " << Obj << endl;
 }
 
 void Explore::move(int key) {

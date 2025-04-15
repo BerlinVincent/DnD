@@ -13,7 +13,7 @@ class CreationEngine {
          * @returns The created Entity
          * @author BerlinVincent
          */
-        auto createEntity(ifstream &file) -> entity::Entity *;
+        auto createEntity(ifstream &file) -> Entity *;
 
         /**
          * @brief A function to create an Entity in a menu

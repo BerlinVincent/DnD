@@ -12,8 +12,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 include(CTest)
 enable_testing()
 
-# add_subdirectory(DungeonsAndDragons)
-
 set(Headers
     DungeonsAndDragons/Framework/entities/Entity.hpp
     DungeonsAndDragons/Framework/entities/Player.hpp
@@ -51,29 +49,7 @@ set(Sources
     DungeonsAndDragons/Framework/inclusions.hpp
 )
 
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
+add_library(${This} STATIC ${Sources} ${Headers})
 
-# Game Target
-
-add_executable(dnd ${Sources} DungeonsAndDragons/main.cpp)
-target_link_libraries(dnd ${CURSES_LIBRARIES})
-
-
-# Test Target
-
-# For Windows: Prevent overiding parent project's compiler/linker settings
-set(gtest_force_shared_crt IN CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-add_executable(dnd_testing EXCLUDE_FROM_ALL ${Sources} tests/UnitTests.cpp)
-target_link_libraries(dnd_testing PUBLIC gtest_main ${CURSES_LIBRARIES})
-add_dependencies(tests dnd_testing)
-
-add_custom_target(tests)
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/refs/tags/release-1.11.0.zip
-)
-
+add_subdirectory(tests)
+add_subdirectory(DungeonsAndDragons)

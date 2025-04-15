@@ -22,7 +22,7 @@ namespace scenes {
         /**
          * @brief Constructor for Combat Scenes
          */
-        Combat(Player& player, entity::Entity& enemy) :
+        Combat(Player& player, Entity& enemy) :
             player(player),
             enemy(enemy),
             act() {
@@ -42,7 +42,7 @@ namespace scenes {
     private:    
         Action act;
         Player &player;
-        entity::Entity &enemy;
+        Entity &enemy;
         int turn;
     };
 
