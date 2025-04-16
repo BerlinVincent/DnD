@@ -14,8 +14,3 @@ target_link_libraries(${This} PUBLIC
     ${CURSES_LIBRARIES}
     DnD
 )
-
-add_test(
-    NAME ${This}
-    COMMAND ${This}
-)

@@ -63,9 +63,13 @@ auto main(int argc, char *argv[]) -> int {
     game::Game handler(renderer, scene);
     */
 
-    ifstream FileMainMenu("./Database/SheetFiles/MainMenu.txt", ios::in);
+    cout << "Getting FilePath" << endl;
+    ifstream FileMainMenu("./Database/SheetFiles/MainMenu.txt");
+    cout << "FilePath Got: " << endl << "Instantiating Sheet" << endl;
     scenes::Sheet SheetMainMenu(FileMainMenu);
+    cout << "Sheet Instantiated" << endl << "Running Menu" << endl;
     SheetMainMenu.runMenu();
+    cout << "Menu Run" << endl << "End of Sequence" << endl;
     
     //if(test() != 0) cerr << "Error while testing" << endl;
 
