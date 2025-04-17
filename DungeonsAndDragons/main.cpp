@@ -4,12 +4,15 @@
 
 namespace fs = std::filesystem;
 
-auto main(int argc, char *argv[]) -> int {
+void ncursesInit() {
     initscr();
     noecho();
     curs_set(0);
     keypad(stdscr, true);
+}
 
+auto main(int argc, char *argv[]) -> int {
+    
     /*
     render::Renderer renderer;
     game::Game handler(renderer, scene);
@@ -21,6 +24,8 @@ auto main(int argc, char *argv[]) -> int {
         return 1;
     }
     scenes::Sheet SheetMainMenu(FileMainMenu);
+
+    ncursesInit();
     SheetMainMenu.runMenu();
 
     return 0;
