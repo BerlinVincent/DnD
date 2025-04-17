@@ -78,10 +78,6 @@ Sheet::Sheet(ifstream &file) {
 }
 
 void Sheet::runMenu() {
-    initscr();
-    noecho();
-    curs_set(0);
-    keypad(stdscr, true);
 
     size_t highlight = 0;
     int input;
