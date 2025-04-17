@@ -1,0 +1,136 @@
+#+TITLE: ToDo Liste
+
+* TODO herausfinden, wie wir die Entity Klasse strukturieren [X]
+    - [X] Entity Saving Throws
+    - [X] Entity Skills --aufgeschoben, Relevanz für Projekt?
+    - [X] Entity Konstuktor
+** IDEA Hashmaps
+- ähnlich wie gerade
+- constant time lookup :)
+- Code Reflektion
+
+
+* TODO Proficiency System implementieren und in Entity Skills integrieren [ ]
+    - [ ] wie wird Proficiency gespeichert?
+        -/
+            - als bool: wenn eine Entity in einem Skill Proficiency hat ist der zugehörige bool = true
+                -> Nachteil: wir haben für jeden Skill einen zugehörigen bool, den wir immer berücksichtigen müssen
+            - in eigenem Datentyp: wir schreiben einen eigenen Skill Datentyp, den wir auf verschiedene Eigenschaften auswerten können
+        /-
+    - [ ] wie wird Profieciency in die Entity Skills eingerechnet?
+
+* TODO !Wichtig! Character Creator [ ]
+    entweder
+    - [ ] 1. CharacterCreator.cpp : beinhaltet eine Funktion, mit der man in der Konsole einen Player-Character erstellen kann, dieser wird an das Spiel übergeben.
+    oder
+    - [ ] 2. CharacterCreator.git : ein Submodul, das ähnlich funktioniert wie 1., aber eine Datei generiert, die man zu Anfang des Spiels einliest
+             und in der man nach dem Spielen seinen Player-Character speichert. 
+    Ich will so oder so irgendwann eine Speicherfunktion implementieren, damit man nicht immer wieder einen neuen Player-Character erstellen muss. 
+
+* TODO Trait_and_Feat Effekte brainstormen und implementieren [ ]
+    -/  
+        Traits und Feats haben teils sehr unterschiedliche Effekte.
+        Wir müssen uns also überlegen, wie wir die Effekte auf die Entities anwenden.
+        Zum Beispiel könnten wir den Entities eine Liste an Traits und Feats geben,
+        die bereits auf sie angewendet wurde, sodass wir die "base stats" von den aktuellen unterscheiden können.
+        Es wäre vielleicht auch praktisch Traits und Feats als String Pair zu speichern;
+        der erste String ist der Name und der zweite ein leichter auswertbarer Effekt-String;
+        z.B. für den [Tavern Brawler](https://dnd5e.wikidot.com/feat:tavern-brawler) Trait:
+        {Tavern Brawler, str:+1<=20_const:+1<=20_proficiency:improvisedweapons_unarmed:d4_bonusaction:grapple:hit:unarmedORimprovisedweapon}
+        Das Format müsste man dann noch festlegen, damit man den String richtig auslesen kann.
+    /-
+    - alternativ als decorator eg.
+      #+begin_src cpp
+struct Entity
+{
+    int getStat(std::string name){return stats[name];}
+};
+struct Feat
+{
+    Entity *entity;
+    Feat(Entity *entity)
+        : entity(entity)
+    {}
+    virtual int getState(std::string name){return entity->getStat(name)};
+};
+struct tavern_brawler : public Feat
+{
+    int bonus;
+    int getStat(std::string name){
+        int base stat = entity->getStat(name);
+        if(name=="proficenty"){
+            return bonus + base;
+        } else if("attack"){
+            return throwD4();
+        }
+    }
+};
+      #+end_src
+      Wenn wir das mit abstracten Klassen lösen, können Feats alles mögliche machen. Nichtnur Scores ändern, sondern zb. auch neue Features implementieren (Theoretisch)
+      Wir könnten Actions {Attack, }
+    - [ ] Traits und Feats funktionieren
+* TODO Architektur
+#+begin_src plantuml :file arch.svg
+!theme mars
+skinparam linetype ortho
+
+!define Std #AliceBlue
+!define Plt #Bisque
+
+skinparam legendBackgroundColor #FFFFFF
+skinparam legendBorderColor #FFFFFF
+skinparam legendEntrySeparator #FFFFFF
+
+legend right
+    | Color| Meaning|
+    |<##Std##>| CrossPlatform |
+    |<##Plt##>| Platform Specific |
+endlegend
+
+package "Memory" #Lightgreen {
+        [game.State] ##Std##
+}
+package "UI" #Lightblue {
+        [menu.view] ##Plt##
+        [explore.view] ##Plt##
+        [combat.view] ##Plt##
+}
+package "Logic" #Coral {
+        [game.logic] ##Std##
+}
+package "Serialize" #grey {
+        [load.pack] ##Std##
+        [save.pack] ##Std##
+}
+
+[game.State] <-- UI
+[game.logic] --> [Serialize]
+
+[menu.view] --> [load.pack]
+[menu.view] --> [store.pack]
+
+[save.pack] -> [game.State]
+[load.pack]  -> [game.State]
+[game.logic] -> [game.State]
+
+}
+  #+end_src
+
+#+RESULTS:
+[[file:arch.svg]]
+
+** UI
+- Platform specific User Interface
+- Renders and Displays Data from GameState
+- Generates Input Events through [[https://github.com/TheRobotFox/eve][eve]]
+- can Recieve Notification Events from Game Logik
+** Game State
+- Store Player Data
+- Current Scene eg. Explore, Combat, ...
+- exact Fighting State (Attack (featX: D6(=3), featY: D4(WAITING)))
+- Maybe Compile attacks into expression-Tree
++ ensure shallow execution for Robust Storing
+** Logic
+- Revieces Input Events from the [[UI][UI]]
+- Process Input -> apply changes to [[Game State]]
+- Can Save/Load Gamestate via [[https://github.com/TheRobotFox/pack][pack]]
