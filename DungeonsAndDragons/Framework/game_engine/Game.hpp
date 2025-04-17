@@ -5,16 +5,24 @@
 #include <stack>
 
 namespace game {
-    class Game {
-        render::Renderer &renderer;
+    struct Gamestate {
+        render::Renderer& renderer;
         stack<scenes::Scene> scenes;
 
-    public:
-        Game(render::Renderer &renderer, scenes::Scene &scene) :
-        renderer(renderer) {
-            scenes.push(scene);
-        }
+        Gamestate(render::Renderer& renderer, scenes::Scene& scene) :
+            renderer(renderer) {
+                scenes.push(scene);
+            }
     };
+
+    class Game {
+        Gamestate gamestate;
+
+    public:
+        Game(render::Renderer& renderer, scenes::Scene& scene) :
+            gamestate(renderer, scene) {}
+    };
+
 }  // namespace game
 
 #endif  // GAME_H_

@@ -55,7 +55,7 @@ void Explore::move(int key) {
     }
 }
 
-Sheet::Sheet(ifstream &file) {
+Sheet::Sheet(ifstream& file) {
     string line, label, effect;
 
     regex pattern_menu_name(R"(^\s*MenuName\s*:\s*(.+)\s*$)");
