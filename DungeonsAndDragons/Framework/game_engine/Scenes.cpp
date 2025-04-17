@@ -78,17 +78,21 @@ Sheet::Sheet(ifstream &file) {
 }
 
 void Sheet::runMenu() {
+    initscr();
+    noecho();
+    curs_set(0);
+    keypad(stdscr, true);
 
     size_t highlight = 0;
     int input;
 
     while (true) {
         clear();
-        mvprintw(0, 0, this->menuName.c_str());
+        mvaddstr(0, 0, this->menuName.c_str());
 
         for (size_t i = 0; i < this->options.size(); i++) {
             if (i == highlight) attron(A_REVERSE);
-            mvprintw(i + 2, 2, "%s", this->options[i].label.c_str());
+            mvaddstr(i + 2, 2, this->options[i].label.c_str());
             if (i == highlight) attroff(A_REVERSE);
         }
 
