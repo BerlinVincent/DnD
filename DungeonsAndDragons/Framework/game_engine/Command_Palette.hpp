@@ -14,6 +14,7 @@ static inline unordered_map<string, basicCommand> command_map = {
     },
     {
         "quit_game", []() {
+            cout << endl;
             exit(0);
         }
     },

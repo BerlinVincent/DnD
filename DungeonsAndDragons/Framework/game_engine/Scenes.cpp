@@ -110,7 +110,7 @@ void Sheet::runMenu() {
                     command_map[this->options[highlight].command]();
                 } else {
                     clear();
-                    mvprintw(0, 0, "This function has not been implemented.");
+                    mvaddstr(0, 0, "This function has not been implemented.");
                     napms(2000);
                 }
                 break;

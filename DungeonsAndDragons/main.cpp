@@ -64,8 +64,13 @@ auto main(int argc, char *argv[]) -> int {
     */
 
     cout << "Getting FilePath" << endl;
-    ifstream FileMainMenu("./Database/SheetFiles/MainMenu.txt");
-    cout << "FilePath Got: " << endl << "Instantiating Sheet" << endl;
+    ifstream FileMainMenu("../../DungeonsAndDragons/Database/SheetFiles/MainMenu.txt");
+    if (!FileMainMenu.is_open()) {
+        cout << "File not opened" << endl;
+        return 1;
+    }
+    cout << "FilePath Got" << endl;
+    cout << "Instantiating Sheet" << endl;
     scenes::Sheet SheetMainMenu(FileMainMenu);
     cout << "Sheet Instantiated" << endl << "Running Menu" << endl;
     SheetMainMenu.runMenu();
