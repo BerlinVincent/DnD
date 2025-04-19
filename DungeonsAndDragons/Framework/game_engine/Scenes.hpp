@@ -12,6 +12,7 @@
 #include <ncurses.h>
 
 namespace scenes {
+
     /**
      * @brief Struct to hold Combat Information and Methods to modify any stats
      * @authors BerlinVincent
@@ -88,7 +89,7 @@ namespace scenes {
         /**
          * @brief Constructor for Sheet Scenes, e.g. Menus, Character Sheets, Inventories, etc.
          */
-        Sheet(ifstream &file);
+        Sheet(istringstream& stream);
 
         /**
          * This belongs into the renderer, I think
@@ -121,6 +122,7 @@ namespace scenes {
             return currentScene;
         }
     };
+
 }  // namespace scenes
 
 #endif  // SCENES_H_

@@ -55,16 +55,17 @@ void Explore::move(int key) {
     }
 }
 
-Sheet::Sheet(ifstream& file) {
+Sheet::Sheet(istringstream& stream) {
     string line, label, effect;
 
     regex pattern_menu_name(R"(^\s*MenuName\s*:\s*(.+)\s*$)");
     regex pattern_option(R"(^\s*Option\s*:\s*(.+)\s*$)");
     regex pattern_effect(R"(^\s*Command\s*:\s*(.+)\s*$)");
-    regex pattern_sep("^-+$");
+    regex pattern_sep(R"(^\s*-+\s*$)");
+
     smatch match;
 
-    while (getline(file, line)) {
+    while (getline(stream, line)) {
         if (regex_match(line, match, pattern_menu_name)) {
             this->menuName = match[1];
         } else if (regex_match(line, match, pattern_option)) {

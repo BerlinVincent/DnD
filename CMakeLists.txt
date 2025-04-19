@@ -13,6 +13,10 @@ include(CTest)
 enable_testing()
 
 set(Headers
+    DungeonsAndDragons/Database/SheetFiles/menu_inclusions.hpp
+    DungeonsAndDragons/Database/SheetFiles/Menu_Factory.hpp
+    DungeonsAndDragons/Database/SheetFiles/MainMenu.hpp
+
     DungeonsAndDragons/Framework/entities/Entity.hpp
     DungeonsAndDragons/Framework/entities/Player.hpp
 
@@ -33,6 +37,8 @@ set(Headers
 )
 
 set(Sources
+    DungeonsAndDragons/Database/SheetFiles/Menu_Factory.cpp
+
     DungeonsAndDragons/Framework/entities/Entity.cpp
     DungeonsAndDragons/Framework/entities/Player.cpp
 

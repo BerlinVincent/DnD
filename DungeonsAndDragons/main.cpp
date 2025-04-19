@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Framework/game_engine/Game.hpp"
 #include "Framework/CharacterCreator/CreationEngine.hpp"
+#include "Database/SheetFiles/menu_inclusions.hpp"
 
 namespace fs = std::filesystem;
 
@@ -12,13 +13,9 @@ void ncursesInit() {
 }
 
 auto main(int argc, char *argv[]) -> int {
-
-    ifstream FileMainMenu("../../DungeonsAndDragons/Database/SheetFiles/MainMenu.txt");
-    if (!FileMainMenu.is_open()) {
-        cout << "File not opened" << endl;
-        return 1;
-    }
-    scenes::Sheet SheetMainMenu(FileMainMenu);
+    
+    istringstream StreamMainMenu = menu::getMenuStream("main");
+    scenes::Sheet SheetMainMenu(StreamMainMenu);
 
     /* This does not work yet
     render::Renderer renderer;
