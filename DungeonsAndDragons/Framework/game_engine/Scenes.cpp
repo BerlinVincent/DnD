@@ -1,5 +1,4 @@
 #include "Scenes.hpp"
-#include "Command_Palette.hpp"
 
 using namespace scenes;
 

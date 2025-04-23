@@ -2,6 +2,8 @@
 #define COMMANDS_H_
 
 #include "Scenes.hpp"
+#include "../CharacterCreator/CreationEngine.hpp"
+#include <ncurses.h>
 #include <functional>
 
 using basicCommand = std::function<void()>;
@@ -11,6 +13,13 @@ static inline unordered_map<string, basicCommand> command_map = {
         "start_game", []() {
             
         } 
+    },
+    {
+        "start_character_creation", []() {
+            clear();
+            CreationEngine Create;
+            Create.createPlayerFile();
+        }
     },
     {
         "quit_game", []() {

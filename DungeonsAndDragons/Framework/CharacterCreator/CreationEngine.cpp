@@ -1,4 +1,5 @@
 #include "CreationEngine.hpp"
+#include <ncurses.h>
 #include <fstream>
 #include <regex>
 
@@ -82,6 +83,8 @@ void CreationEngine::createPlayerFile() {
         "WIS",
         "CHA"
     };
+
+    cout << endl;
 
     for (size_t i = 0; i < inputs.size(); i++) {
         cout << "Enter " << inputs[i] << ": " << endl;

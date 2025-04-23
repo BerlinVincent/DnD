@@ -11,8 +11,8 @@ namespace menu {
         Option: Start Game
         Command: start_game
         ---
-        Option: 
-        Command: 
+        Option: Create Character
+        Command: start_character_creation
         ---
         Option: Quit Game
         Command: quit_game

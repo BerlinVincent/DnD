@@ -3,7 +3,7 @@
 
 #include "../entities/Player.hpp"
 #include "Action.hpp"
-// #include "Command_Palette.hpp"
+#include "Command_Palette.hpp"
 #include <fstream>
 #include <regex>
 #include <variant>
