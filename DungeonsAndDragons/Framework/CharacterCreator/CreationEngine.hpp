@@ -26,6 +26,8 @@ class CreationEngine {
          * @author BerlinVincent
          */
         void createPlayerFile();
+
+        void createPlayerFile2();
 };
 
 #endif // CREATION_ENGINE_H_

@@ -1,0 +1,14 @@
+[name] : [Vincent]
+[descriptor] : [BBEG]
+
+[max_hp] : [500]
+[armor_class] : [15]
+[speed] : [100]
+[challenge] : [1000000]
+
+[STR] : [20]
+[DEX] : [20]
+[CON] : [20]
+[INT] : [20]
+[WIS] : [20]
+[CHA] : [20]

@@ -94,3 +94,89 @@ void CreationEngine::createPlayerFile() {
         file << "[" << inputs[i] << "] : [" << line << "]" << endl; 
     }
 }
+
+void CreationEngine::createPlayerFile2() {
+    filesystem::path walking_path = filesystem::current_path();
+    filesystem::path target_path = "";
+    
+    while (walking_path.has_parent_path() && walking_path.filename() != "DnD") {
+        walking_path = walking_path.parent_path();
+        target_path /= "..";
+    }
+    target_path /= "DungeonsAndDragons/Database/Player.txt";
+
+    ofstream file(target_path, ios::trunc);
+    string line;
+    vector<pair<string, string>> prompts = {
+        {"name", "-"},
+        {"descriptor", "-"},
+        {"max_hp", "0"},
+        {"armor_class", "0"},
+        {"speed", "0"},
+        {"challenge", "0"},
+        {"STR", "0"},
+        {"DEX", "0"},
+        {"CON", "0"},
+        {"INT", "0"},
+        {"WIS", "0"},
+        {"CHA", "0"}
+    };
+
+    size_t highlight = 0;
+    int input;
+    char buffer[100];
+    bool done = false;
+
+    while(!done) {
+        clear();
+        mvaddstr(0, 0, "Character Creation Menu (↑/↓ zum Navigieren, Enter zum Bearbeiten)");
+
+        for (size_t i = 0; i < prompts.size(); i++) {
+            string prompt = prompts[i].first + " : ";
+            mvaddstr(i + 2, 1, prompt.c_str());
+            if (i == highlight) attron(A_REVERSE);
+            mvaddstr(i + 2, 20, prompts[i].second.c_str());
+            if (i == highlight) attroff(A_REVERSE);
+        }
+
+        size_t done_index = prompts.size();
+        if (highlight == done_index) attron(A_REVERSE);
+        mvaddstr(done_index + 3, 2, "Done");
+        if (highlight == done_index) attroff(A_REVERSE);
+
+        input = getch();
+
+        switch (input) {
+            case KEY_UP:
+                highlight = (highlight == 0) ? prompts.size() : highlight - 1;
+                break;
+            case KEY_DOWN:
+                highlight = (highlight == prompts.size()) ? 0 : highlight + 1;
+                break;
+            case 10: // Enter
+                if (highlight == done_index) done = true;
+                else {
+                    echo();
+                    curs_set(1);
+                    move(highlight + 2, 20);
+                    getnstr(buffer, sizeof(buffer) - 1);
+                    prompts[highlight].second = buffer;
+                    noecho();
+                    curs_set(0);
+                }
+                break;
+        }
+    }
+
+    for (size_t i = 0; i < prompts.size(); i++) {
+        if (i == 2 || i == 6) file << endl;
+        file << "[" << prompts[i].first << "] : [" << prompts[i].second << "]" << endl; 
+    }
+
+    clear();
+    mvaddstr(0, 0, "Character Creation Menu");
+    mvaddstr(2, 1, "Player File written to:");
+    mvaddstr(3, 1, target_path.string().c_str());
+    mvaddstr(4, 1, "Press any key to continue...");
+    getch();
+}

@@ -18,12 +18,13 @@ static inline unordered_map<string, basicCommand> command_map = {
         "start_character_creation", []() {
             clear();
             CreationEngine Create;
-            Create.createPlayerFile();
+            Create.createPlayerFile2();
         }
     },
     {
         "quit_game", []() {
-            cout << endl;
+            clear();
+            endwin();
             exit(0);
         }
     },
