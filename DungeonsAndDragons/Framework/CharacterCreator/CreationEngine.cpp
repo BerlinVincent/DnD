@@ -143,6 +143,7 @@ void CreationEngine::createPlayerFile2() {
         if (highlight == done_index) attron(A_REVERSE);
         mvaddstr(done_index + 3, 2, "Done");
         if (highlight == done_index) attroff(A_REVERSE);
+        int temp;
 
         input = getch();
 
@@ -152,6 +153,28 @@ void CreationEngine::createPlayerFile2() {
                 break;
             case KEY_DOWN:
                 highlight = (highlight == prompts.size()) ? 0 : highlight + 1;
+                break;
+            case KEY_LEFT:
+                if ((highlight > 5 && highlight < 12)) {
+                    try {
+                        temp = std::stoi(prompts[highlight].second);
+                        if (temp > 0) {
+                            temp--;
+                            prompts[highlight].second = std::to_string(temp);
+                        }
+                    } catch (const std::exception& e) {}
+                }
+                break;
+            case KEY_RIGHT:
+                if ((highlight > 5 && highlight < 12)) {
+                    try {
+                        temp = std::stoi(prompts[highlight].second);
+                        if (temp < 20) {
+                            temp++;
+                            prompts[highlight].second = std::to_string(temp);
+                        }
+                    } catch (const std::exception& e) {}
+                }
                 break;
             case 10: // Enter
                 if (highlight == done_index) done = true;
